@@ -14,7 +14,10 @@ class AskController extends \BaseController {
 		{			
 			return Redirect::to("/login");
 		}
-		return View::make('ask.index');
+
+		$arr_categories = Category::all();
+
+		return View::make('ask.index')->withCategories( $arr_categories );
 	}
 
 
@@ -96,22 +99,19 @@ class AskController extends \BaseController {
 			return Redirect::to("/login");
 		}
 
-		$category_image = $category . ".jpg";
-		$arr_categories = array(
-			"health" => "Health",
-			"property" => "Property",
-			"food" => "Food",
-			"love" => "Love",
-			"education" => "Education"
-		);
-		$arr_experts = array(
-			"0" => "All Experts",
-			"1" => "Dr. Boyke", 
-			"2" => "Dr. Bondan", 
-			"3" => "Dr. Ronny"
-		);
+		$arr_category = Category::where('category_alias', $category)->first();
+		$category_id = $arr_category->id;
+		$arr_experts = Expert::where('category_id', $category_id)->get();
 
-		return View::make('ask.question')->withCategory($category)->withImage($category_image)->withExperts($arr_experts)->withCategories($arr_categories);
+		$experts = array();
+		$experts["0"] = "All Experts";
+
+		foreach( $arr_experts as $expert )
+		{
+			$experts[$expert->id] = $expert->expert_name . ' ( '. ( $expert->expertises ) .' )';
+		}
+
+		return View::make('ask.question')->withCategory($arr_category)->withExperts($experts);
 	}
 
 	// function to show questions list of currently logged-in user

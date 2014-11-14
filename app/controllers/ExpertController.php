@@ -90,57 +90,11 @@ class ExpertController extends \BaseController {
 		{			
 			return Redirect::to("/login");
 		}
-		
-		$category_image = $category . ".jpg";
-		$arr_categories = array(
-			"health" => "Health",
-			"property" => "Property",
-			"food" => "Food",
-			"love" => "Love",
-			"education" => "Education"
-		);
 
-		$arr_experts = array();
+		$arr_category = Category::where('category_alias', $category)->first();
+		$category_id = $arr_category->id;
+		$arr_experts = Expert::where('category_id', $category_id)->get();
 
-		if ( $category == "health")
-		{
-			$arr_experts = array(				
-				"1" => "Dr. Boyke", 
-				"2" => "Dr. Bondan", 
-				"3" => "Dr. Ronny"
-			);
-		}
-		else
-		if ( $category == "property")
-		{
-			$arr_experts = array(
-				"1" => "Budi", 
-				"2" => "Andi",
-			);
-		}
-		else
-		if ( $category == "food")
-		{
-			$arr_experts = array(
-				"1" => "Gordon Ramsey", 
-				"2" => "Rudi Choirudin",
-			);
-		}
-		else
-		if ( $category == "love")
-		{
-			$arr_experts = array(
-				"1" => "Dr. Phil", 				
-			);
-		}
-		else
-		if ( $category == "education")
-		{
-			$arr_experts = array(
-				"1" => "Kak Seto", 
-			);
-		}
-
-		return View::make('experts.list')->withCategory($category)->withImage($category_image)->withExperts($arr_experts)->withCategories($arr_categories);
+		return View::make('experts.list')->withCategory($arr_category)->withExperts($arr_experts);
 	}
 }

@@ -105,7 +105,7 @@
 			<!-- END PAGE HEADER-->
 			<div class="row">
 				<div class="col-md-12 col-xs-12">
-					<h1 class="current_credit_text">Your Current Credits : <span class="current_credit">50</span></h1>
+					<h1 class="current_credit_text">Your Current Credits : <span class="current_credit">{{ $user->credits }}</span></h1>
 					<div class="pt15 pl20">		
 						<h2>Price List</h2>
 					</div>

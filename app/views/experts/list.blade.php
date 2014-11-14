@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>{{ $categories[$category] }} Experts | Providexpert</title>
+<title>{{ $category->category_name  }} Experts | Providexpert</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -55,7 +55,7 @@
 		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<!-- BEGIN SIDEBAR MENU -->
-			@include('layouts.side', array('menu_active' => 'expert', 'sub_menu_active' => $category))
+			@include('layouts.side', array('menu_active' => 'expert', 'sub_menu_active' => $category->category_alias))
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
@@ -88,7 +88,7 @@
 			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title page-title-img">
-			<img src="/img/categories/{{ $image }}" alt="" border="0" /> {{ $categories[$category] }} Experts
+			<img src="/img/categories/{{ $category->pic_link }}" alt="" border="0" /> {{ $category->category_name }} Experts
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -103,7 +103,7 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						{{ $categories[$category] }} Experts
+						{{ $category->category_name }} Experts
 					</li>				
 				</ul>				
 			</div>
@@ -126,49 +126,44 @@
 					</div>
 
 					<div class="mt20">&nbsp;</div>
+					<?php $i = 1; ?>
+
+					<?php
+					if ( count( $experts ) < 1 )
+					{
+						echo 'No data yet';						
+					}
+					?>		
 
 					<table class="table experts_table">
+					@foreach ( $experts as $expert )
 					<tr>
 					<td class="text-right">
-						1.
+						<?php echo $i; ?>
 					</td>
 					<td>
-						<img alt="" class="img-circle" src="/img/experts/person_icon.png" />
+						<?php
+						if ( ( $expert->pic_link ) == "" )
+						{
+							echo '<img alt="" class="img-circle" src="/img/experts/person_icon.png" />';
+						}
+						else
+						{
+							echo '<img alt="" class="img-circle" src="/img/experts/'.( $expert->pic_link ).'" />';	
+						}
+						?>
 					</td>
 					<td>
-						<span class="name">Dr. Boyke</span>
+						<span class="name">{{ $expert->expert_name }}</span>
 						<div class="mt5"></div>
-						Specialized in : relationships
+						Specialized in : {{ $expert->expertises }}
 					</td>
 					</tr>
-					<tr>
-					<td class="text-right">
-						2.
-					</td>
-					<td>
-						<img alt="" class="img-circle" src="/img/experts/person_icon.png" />
-					</td>
-					<td>
-						<span class="name">Dr. Tjien Ronny</span>
-						<div class="mt5"></div>
-						Specialized in : maternity, pregnancy
-					</td>
-					</tr>
-					<tr>
-					<td class="text-right">
-						3.
-					</td>
-					<td>
-						<img alt="" class="img-circle" src="/img/experts/person_icon.png" />
-					</td>
-					<td>
-						<span class="name">Dr. Bondan</span>
-						<div class="mt5"></div>
-						Specialized in : eye, vision
-					</td>
-					</tr>
+					<?php $i++; ?>
+					@endforeach
 					</table>
 
+					<!--
 					<div class="text-right">
 						<ul class="pagination">
 						<li>
@@ -207,6 +202,7 @@
 						</li>
 						</ul>
 					</div>
+					-->
 
 				</div>
 			</div>				
