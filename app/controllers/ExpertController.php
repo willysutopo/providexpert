@@ -9,7 +9,15 @@ class ExpertController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		// if user has not logged in
+		if ( !Auth::check() )
+		{			
+			return Redirect::to("/login");
+		}
+
+		$arr_categories = Category::all();
+
+		return View::make('experts.index')->withCategories( $arr_categories );
 	}
 
 

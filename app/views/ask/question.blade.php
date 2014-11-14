@@ -104,15 +104,25 @@
 					</li>
 					<li>
 						{{ $category->category_name }} Question
-					</li>				
+					</li>
 				</ul>				
 			</div>
+
+			@if (Session::has('message'))
+				<div class="bg-success success_padder success_margin pt20 pb20 pl20 pr20 mb20">
+					{{{ Session::get('message') }}}. Please go to <a href="/questions">Question List</a> to view your questions
+				</div>
+			@endif
+
 			<!-- END PAGE HEADER-->
 			{{ Form::open(array('route' => 'ask.store', 'class'=>'form-horizontal', 'role'=>'form')) }}
 			<div class="row">
 				<div class="col-md-8 col-xs-12">
+					<input type="hidden" name="category_id" value="{{ $category->id }}" />
+					<input type="hidden" name="category" value="{{ $category->category_alias }}" />
 					<label>Your Question</label>
 					{{ Form::textarea('question', '', array('rows' => 8, 'id' => 'question', 'class' => 'form-control ')) }}
+					{{ $errors->first('question', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
 				</div>
 			</div>
 			<div class="mt20"></div>

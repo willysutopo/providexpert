@@ -39,7 +39,32 @@ class AskController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$rules = [
+			'question' => ['required'],
+		];
+
+		$category = Input::get('category');
+
+		$validator = Validator::make(Input::all(), $rules);
+		if ($validator->fails())
+		{
+			return Redirect::route('ask.question',[$category])->withErrors($validator)->withInput();
+		}
+
+		$question = addslashes(Input::get('question'));
+		$category_id = Input::get('category_id');
+		$asker_id = Auth::user()->id;
+		$specific_expert_id = Input::get('expert_id');
+
+		$data = new Question();
+		$data->question = $question;
+		$data->category_id = $category_id;
+		$data->asker_id = $asker_id;
+		$data->specific_expert_id = $specific_expert_id;
+		$data->published = 1;
+		$data->save();
+
+		return Redirect::route('ask.question',[$category])->withMessage('New question saved');
 	}
 
 
