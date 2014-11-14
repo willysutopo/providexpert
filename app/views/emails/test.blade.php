@@ -1,0 +1,1 @@
+{{ stripslashes( rawurldecode( $content ) ) }}

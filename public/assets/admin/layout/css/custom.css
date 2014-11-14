@@ -1,0 +1,209 @@
+/* MARGIN */
+.mt0 { margin-top:0px; }
+.ml0 { margin-left:0px; }
+.mb0 { margin-bottom:0px; }
+.mr0 { margin-right:0px; }
+
+.mt5 { margin-top:5px; }
+.ml5 { margin-left:5px; }
+.mb5 { margin-bottom:5px; }
+.mr5 { margin-right:5px; }
+
+.mt10 { margin-top:10px; }
+.ml10 { margin-left:10px; }
+.mb10 { margin-bottom:10px; }
+.mr10 { margin-right:10px; }
+
+.mt10 { margin-top:15px; }
+.ml15 { margin-left:15px; }
+.mb15 { margin-bottom:15px; }
+.mr15 { margin-right:15px; }
+
+.mt20 { margin-top:20px; }
+.ml20 { margin-left:20px; }
+.mb20 { margin-bottom:20px; }
+.mr20 { margin-right:20px; }
+/* END OF MARGIN */
+
+/* PADDING */
+.pt0 { padding-top:0px; }
+.pl0 { padding-left:0px; }
+.pb0 { padding-bottom:0px; }
+.pr0 { padding-right:0px; }
+
+.pt5 { padding-top:5px; }
+.pl5 { padding-left:5px; }
+.pb5 { padding-bottom:5px; }
+.pr5 { padding-right:5px; }
+
+.pt10 { padding-top:10px; }
+.pl10 { padding-left:10px; }
+.pb10 { padding-bottom:10px; }
+.pr10 { padding-right:10px; }
+
+.pt10 { padding-top:15px; }
+.pl15 { padding-left:15px; }
+.pb15 { padding-bottom:15px; }
+.pr15 { padding-right:15px; }
+
+.pt20 { padding-top:20px; }
+.pl20 { padding-left:20px; }
+.pb20 { padding-bottom:20px; }
+.pr20 { padding-right:20px; }
+/* END OF PADDING */
+
+/* DASHBOARD RELATED */
+.dashboard .ask_container
+{
+  text-align:center;
+  margin-top:130px;
+  margin-bottom:50px;
+}
+
+.dashboard .ask_container a
+{
+  color:#FF9100;
+  font-weight:bold;
+  font-size:40px;
+}
+
+.dashboard .ask_container .fa
+{
+  font-size:300px;
+  color:#FF9100
+}
+
+.dashboard .dashboard-stat
+{
+  height:330px;
+}
+
+.dashboard .dashboard-stat .visual i
+{
+  font-size:300px;
+}
+
+.dashboard .dashboard-stat .details button, .dashboard .dashboard-stat .details i
+{
+  font-size:20px;
+}
+/* END OF DASHBOARD RELATED */
+
+/* TOP UP RELATED */
+.topup_page .current_credit_text
+{  
+  color:#ff0000;  
+}
+
+.topup_page .current_credit
+{  
+  border-radius:50% !important;
+  font-size:30px;
+  padding:10px 10px;
+  width:100%;
+  height:100%;
+  background-color:#ff0000;
+  color:#ffffff;  
+}
+
+.topup_page .price_option span
+{
+  font-size:16px;
+}
+/* END OF TOP UP RELATED */
+
+/* ATTACH FILES BUTTON RELATED */
+.fileinput-button
+{
+  position:relative;
+  overflow:hidden;
+}
+
+.fileinput-button #attachment
+{
+  position:absolute;
+  top:0;
+  right:0;
+  margin:0;
+  opacity:100;
+  font-size:200px;
+  direction:ltr;
+  cursor:pointer
+}
+/* END OF ATTACH FILES BUTTON RELATED */
+
+/* QUESTIONS LIST RELATED */
+.questions_list .answered
+{
+  font-size:12px;
+  color:#3276b1;
+}
+
+.questions_list .unanswered
+{
+  font-size:12px;
+  color:#ff0000;
+}
+
+.questions_list .info
+{
+  font-size:12px;
+  color:#666666;
+}
+/* END OF QUESTIONS LIST RELATED */
+
+/* ASKING QUESTION RELATED */
+.ask_choose_category .row img
+{
+  width:80%;
+}
+
+.ask_choose_category .row a
+{
+  font-size:30px;
+  text-decoration:none;
+}
+
+.ask_question .page-title-img img
+{
+  width:50px;
+}
+/* END OF ASKING QUESTION RELATED */
+
+/* ANSWERS RELATED */
+.answer .dashboard-stat .question
+{
+  padding:15px 15px;
+  color:#ffffff;
+}
+
+.answer .answered
+{
+  font-size:12px;
+  color:#3276b1;
+}
+
+.answer .info
+{
+  font-size:12px;
+  color:#666666;
+}
+/* END OF ANSWERS RELATED */
+
+/* EXPERTS RELATED */
+.experts_table img
+{
+  width:100px;
+}
+
+.experts_table td
+{
+  vertical-align:middle;
+}
+
+.experts_table .name
+{
+  font-weight:bold;
+  font-size:16px;
+}
+/* END OF EXPERTS RELATED */

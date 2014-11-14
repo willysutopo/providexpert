@@ -1,0 +1,5 @@
+# Ignore the contents of the upload and thumbnail directories
+source/*
+!source/Source.txt
+thumbs/*
+!thumbs/thumbs.txt
