@@ -74,3 +74,10 @@ Route::group(array('before' => 'roleUser'), function () {
 	Route::get('expert/{category}', array('as' => 'expert.show_list', 'uses' => 'ExpertController@show_list'));
 });
 /* END OF EXPERT RELATED */
+
+
+/* PROFILE RELATED */
+Route::resource('profile', 'ProfileController');
+Route::group(array('before' => 'roleUser'), function () {
+	Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'DashboardController@index'));
+});

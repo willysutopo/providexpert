@@ -29,7 +29,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="/admins/myprofile">
+							<a href="/profile">
 							<i class="icon-user"></i> My Profile </a>
 						</li>
 						<li class="divider">

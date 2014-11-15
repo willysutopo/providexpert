@@ -225,8 +225,8 @@ class LoginController extends \BaseController {
 	public function doRegister()
 	{
 		$rules = array(
-      'email' => 'unique:users,email',
-    );
+	      'email' => 'unique:users,email',
+	    );
 
 		$messages = array(
 	    'unique' => 'Email already exists in database.',
@@ -262,6 +262,13 @@ class LoginController extends \BaseController {
 		$user->credits = 50; // 50 free initial credits
 		$user->last_login = date("Y-m-d H:i:s");		
 		$user->save();
+
+		//
+		// save user to braintree
+		// 
+		$brain = new BraintreeManager;
+		$name = explode(" ", $fullname);
+		$brain->createUser($user->id, $name[0], (isset($name[1]))?$name[1]:"");
 
 		// Set new registered user role as "User"
 		$role = Role::where('name', '=', 'User')->first();
