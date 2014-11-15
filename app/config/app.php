@@ -123,7 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		 'Zizaco\Confide\ServiceProvider',
 	     'Zizaco\Entrust\EntrustServiceProvider',
-
+	     'Aws\Laravel\AwsServiceProvider'
 	),
 
 	/*
@@ -192,7 +192,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Confide'    => 'Zizaco\Confide\Facade',
 		'Entrust'    => 'Zizaco\Entrust\EntrustFacade',
-
+		'AWS' => 'Aws\Laravel\AwsFacade',
 	),
 
 );

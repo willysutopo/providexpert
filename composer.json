@@ -9,6 +9,7 @@
 		"mailgun/mailgun-php":"1.*",
 		"guzzlehttp/guzzle": "~4",
 		"aws/aws-sdk-php": "2.*",
+		"aws/aws-sdk-php-laravel": "1.*",
 		"pda/pheanstalk": "~2.0",
 		"zizaco/confide": "~4.0@dev",
 		"braintree/braintree_php" : "2.33.0",

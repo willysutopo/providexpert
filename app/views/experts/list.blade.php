@@ -149,7 +149,7 @@
 						}
 						else
 						{
-							echo '<img alt="" class="img-circle" src="/img/experts/'.( $expert->pic_link ).'" />';	
+							echo '<img alt="" class="img-circle" src="'.( $expert->pic_link ).'" />';	
 						}
 						?>
 					</td>
