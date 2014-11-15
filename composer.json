@@ -11,6 +11,7 @@
 		"aws/aws-sdk-php": "2.*",
 		"pda/pheanstalk": "~2.0",
 		"zizaco/confide": "~4.0@dev",
+		"zizaco/entrust": "1.2.*@dev",
 		"paypal/rest-api-sdk-php" : "0.5.*"
 	},
 	"autoload": {
