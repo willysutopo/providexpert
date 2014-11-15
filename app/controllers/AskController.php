@@ -163,14 +163,51 @@ class AskController extends \BaseController {
 			->groupBy('categories.category_alias')
 			->groupBy('categories.category_name')
 			->groupBy('answers.updated_at')
-			->get();
-
-		/*
-		print_r( $questions );
-		exit;
-		*/
+			->get();		
 
 		return View::make('ask.list')->withQuestions($questions)->withCategories($categories);
+	}
+
+	// function to show form for replying question from expert
+	public function reply_question( $id )
+	{
+		// if user has not logged in
+		if ( !Auth::check() )
+		{			
+			return Redirect::to("/login");
+		}
+
+		$question = Question::where('id', $id)->first();
+
+		return View::make('ask.reply')->withQuestion( $question );
+	}
+
+	public function doReply()
+	{
+		$rules = [
+			'reply' => ['required'],
+		];
+
+		$question_id = Input::get('question_id');
+
+		$validator = Validator::make(Input::all(), $rules);
+		if ($validator->fails())
+		{
+			return Redirect::route('ask.reply',[$question_id])->withErrors($validator)->withInput();
+		}
+
+		$reply = addslashes(Input::get('reply'));
+		$expert = Expert::where('user_id', Auth::user()->id)->first();
+		$expert_id = $expert->id;
+
+		$data = new Answer();
+		$data->answer = $reply;
+		$data->question_id = $question_id;
+		$data->expert_id = $expert_id;
+		$data->published = 1;
+		$data->save();
+
+		return Redirect::route('ask.reply',[$question_id])->withMessage('Your reply has been saved.');
 	}
 
 	// function to show answer of a question ( in the form of ID )
@@ -178,7 +215,7 @@ class AskController extends \BaseController {
 	{
 		// if user has not logged in
 		if ( !Auth::check() )
-		{			
+		{
 			return Redirect::to("/login");
 		}
 

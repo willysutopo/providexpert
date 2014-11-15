@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Questions List | Providexpert</title>
+<title>Reply A Question | Providexpert</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -41,7 +41,7 @@
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="questions_list page-header-fixed page-quick-sidebar-over-content ">
+<body class="reply_question page-header-fixed page-quick-sidebar-over-content ">
 <!-- BEGIN HEADER -->
 @include('layouts.top')
 <!-- END HEADER -->
@@ -55,7 +55,7 @@
 		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<!-- BEGIN SIDEBAR MENU -->
-			@include('layouts.expert.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))
+			@include('layouts.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
@@ -88,7 +88,7 @@
 			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title page-title-img">
-			Questions List
+			Reply A Question
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -98,67 +98,48 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						Questions List
-					</li>				
+						Reply A Question
+					</li>
 				</ul>				
 			</div>
-			<!-- END PAGE HEADER-->
+
+			@if (Session::has('message'))
+				<div class="bg-success success_padder success_margin pt20 pb20 pl20 pr20 mb20">
+					{{{ Session::get('message') }}}
+				</div>
+			@endif
 
 			<div class="row">
-				<div class="col-md-9 col-xs-12">
-
-					<!-- search part -->
-					<div class="col-md-6"></div>
-					<div class="text-right col-md-6 pr0">
-						<div class="form-group">
-							<label class="col-md-3 control-label mt5 pr0">Filter</label>
-							<div class="col-md-9 pr0">
-								<select class="form-control" name="question_filter">
-									<option value="all">All Status</option>
-									<option value="0">Unanswered</option>
-									<option value="1">Answered</option>
-								</select>
+				<div class="col-md-12 col-xs-12">
+					<div class="dashboard-stat green-haze">
+						<div class="question">
+							<b>Question :</b>
+							<div class="mt5">
+								{{ stripslashes( $question->question ) }}				
 							</div>
 						</div>
-					</div>
-
-					<div class="mt20">&nbsp;</div>
-
-					<?php $i = 1; ?>
-					<table class="table table-striped table-hover">
-					@foreach( $questions as $question )
-					
-					<tr class="{{ ( ( $question->answer_count == 0 ) ? "question_unanswered" : "question_answered") }}">
-					<td class="text-right">
-						{{ $i }}.
-					</td>
-					<td>
-						{{ stripslashes($question->question) }}
-						<!-- information regarding this questions -->
-						<div class="mt10">
-							<?php
-							if ($question->answer_count == 0)
-							{
-								echo '<span class="unanswered">no answer yet</span>
-								| <a href="/reply/'.$question->id.'">give answers</a>';
-							}
-							else
-							{
-								echo '
-								<span class="answered">answered already</span>
-								| <a href="/answer/'.$question->id.'">view answers</a>
-								<span class="info"> | last answered : '.( date("j F Y", strtotime( $question->answer_updated_at)) ).'</span>';
-							}
-							?>
-						</div>
-					</td>
-					</tr>
-					<?php $i++; ?>
-					@endforeach
-					</table>
+					</div>					
 				</div>
 			</div>
-					
+
+			<!-- END PAGE HEADER-->
+			{{ Form::open(array('route' => 'ask.doreply', 'class'=>'form-horizontal', 'role'=>'form')) }}
+			<div class="row">
+				<div class="col-md-8 col-xs-12">				
+					<label>Your Reply</label>
+					<input type="hidden" name="question_id" value="{{ $question->id }}" />
+					{{ Form::textarea('reply', '', array('rows' => 8, 'id' => 'reply', 'class' => 'form-control ')) }}
+					{{ $errors->first('reply', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+				</div>
+			</div>			
+			<div class="mt20"></div>
+			<div class="row">
+				<div class="col-md-4 col-xs-12">
+					<button class="btn green" type="submit"><i class="fa fa-save"></i> Submit</button>
+					<a href="/expert/dashboard" class="btn default"><i class="fa fa-undo"></i> Cancel</a>
+				</div>
+			</div>
+			{{ Form::close() }}
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>
@@ -198,7 +179,7 @@
 <script src="{{ asset('assets/admin/layout/scripts/layout.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/admin/layout/scripts/quick-sidebar.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/admin/layout/scripts/demo.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/admin/pages/scripts/custom/ask.js') }}"></script>
+<script src="{{ asset('assets/admin/pages/scripts/custom/dashboard-managed.js') }}"></script>
 <script src="{{ asset('assets/admin/pages/scripts/custom/providexpert.js') }}"></script>
 <script>
 jQuery(document).ready(function() {       
@@ -207,7 +188,7 @@ jQuery(document).ready(function() {
 	Layout.init(); // init current layout
 	QuickSidebar.init(); // init quick sidebar
 	Demo.init(); // init demo features
-	AskExpertManaged.init();
+	DashboardManaged.init();
 });
 </script>
 </body>

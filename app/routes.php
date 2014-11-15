@@ -58,6 +58,8 @@ Route::get('ask/{category}', array('as' => 'ask.question', 'uses' => 'AskControl
 Route::get('questions', array('as' => 'ask.list', 'uses' => 'AskController@question_list'));
 Route::post('ask/store', array('as' => 'ask.store', 'uses' => 'AskController@store'));
 Route::get('answer/{id}', array('as' => 'ask.answer', 'uses' => 'AskController@show_answer'));
+Route::get('reply/{id}', array('as' => 'ask.reply', 'uses' => 'AskController@reply_question'));
+Route::post('ask/doreply', array('as' => 'ask.doreply', 'uses' => 'AskController@doReply'));
 Route::resource('ask', 'AskController');
 /* END OF QUESTIONS RELATED */
 

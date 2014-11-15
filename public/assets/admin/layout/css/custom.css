@@ -177,6 +177,12 @@
   color:#ffffff;
 }
 
+.reply_question .dashboard-stat .question
+{
+  padding:15px 15px;
+  color:#ffffff;
+}
+
 .answer .answered
 {
   font-size:12px;

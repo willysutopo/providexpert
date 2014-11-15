@@ -160,7 +160,7 @@
 													echo '
 													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
 													| <a href="/answer/'.$question->id.'">view answers</a>
-													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+													<span class="info"> | last answered : '.( date("j F Y", strtotime( $question->answer_updated_at)) ).'</span>';
 												}
 												?>
 											</div>
@@ -218,7 +218,7 @@
 													echo '
 													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
 													| <a href="/answer/'.$question->id.'">view answers</a>
-													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+													<span class="info"> | last answered : '.( date("j F Y", strtotime( $question->answer_updated_at)) ).'</span>';
 												}
 												?>
 											</div>
@@ -277,7 +277,7 @@
 													echo '
 													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
 													| <a href="/answer/'.$question->id.'">view answers</a>
-													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+													<span class="info"> | last answered : '.( date("j F Y", strtotime( $question->answer_updated_at)) ).'</span>';
 												}
 												?>
 											</div>
@@ -336,7 +336,7 @@
 													echo '
 													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
 													| <a href="/answer/'.$question->id.'">view answers</a>
-													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+													<span class="info"> | last answered : '.( date("j F Y", strtotime( $question->answer_updated_at)) ).'</span>';
 												}
 												?>
 											</div>
@@ -395,7 +395,7 @@
 													echo '
 													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
 													| <a href="/answer/'.$question->id.'">view answers</a>
-													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+													<span class="info"> | last answered : '.( date("j F Y", strtotime( $question->answer_updated_at)) ).'</span>';
 												}
 												?>
 											</div>
