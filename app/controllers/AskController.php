@@ -9,28 +9,10 @@ class AskController extends \BaseController {
 	 */
 	public function index()
 	{
-		// if user has not logged in
-		if ( !Auth::check() )
-		{			
-			return Redirect::to("/login");
-		}
-
 		$arr_categories = Category::all();
 
 		return View::make('ask.index')->withCategories( $arr_categories );
 	}
-
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
 
 	/**
 	 * Store a newly created resource in storage.
@@ -67,63 +49,9 @@ class AskController extends \BaseController {
 		return Redirect::route('ask.question',[$category])->withMessage('New question saved');
 	}
 
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 	// function to ask questions according to category
 	public function ask_question( $category )
 	{
-		// if user has not logged in
-		if ( !Auth::check() )
-		{			
-			return Redirect::to("/login");
-		}
-
 		$arr_category = Category::where('category_alias', $category)->first();
 		$category_id = $arr_category->id;
 		$arr_experts = Expert::where('category_id', $category_id)->get();
@@ -142,12 +70,6 @@ class AskController extends \BaseController {
 	// function to show questions list of currently logged-in user
 	public function question_list()
 	{
-		// if user has not logged in
-		if ( !Auth::check() )
-		{			
-			return Redirect::to("/login");
-		}
-
 		$categories = Category::all();
 
 		$questions = DB::table('questions')
@@ -171,12 +93,6 @@ class AskController extends \BaseController {
 	// function to show form for replying question from expert
 	public function reply_question( $id )
 	{
-		// if user has not logged in
-		if ( !Auth::check() )
-		{			
-			return Redirect::to("/login");
-		}
-
 		$question = Question::where('id', $id)->first();
 
 		return View::make('ask.reply')->withQuestion( $question );
@@ -213,12 +129,6 @@ class AskController extends \BaseController {
 	// function to show answer of a question ( in the form of ID )
 	public function show_answer( $id )
 	{
-		// if user has not logged in
-		if ( !Auth::check() )
-		{
-			return Redirect::to("/login");
-		}
-
 		$question = Question::where('id', $id)->first();
 		$answers = DB::table('answers')
 			->select(DB::raw('answers.answer, experts.expert_name, experts.updated_at'))

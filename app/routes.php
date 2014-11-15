@@ -38,7 +38,6 @@ Route::get('/login', function()
 */
 
 /* DASHBOARD RELATED */
-Route::resource('dashboard', 'DashboardController');
 Route::group(array('before' => 'roleUser'), function () {
 	Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'DashboardController@index'));
 });
@@ -49,21 +48,29 @@ Route::group(array('before' => 'roleExpert'), function () {
 /* END OF DASHBOARD RELATED */
 
 /* TOPUP RELATED */
-Route::get('/topup', 'TopupController@index');
-Route::resource('topup', 'TopupController');
+Route::group(array('before' => 'roleUser'), function () {
+	Route::get('/topup', 'TopupController@index');
+});
 /* END OF TOPUP RELATED */
 
 /* QUESTIONS RELATED */
-Route::get('ask/{category}', array('as' => 'ask.question', 'uses' => 'AskController@ask_question'));
-Route::get('questions', array('as' => 'ask.list', 'uses' => 'AskController@question_list'));
-Route::post('ask/store', array('as' => 'ask.store', 'uses' => 'AskController@store'));
-Route::get('answer/{id}', array('as' => 'ask.answer', 'uses' => 'AskController@show_answer'));
-Route::get('reply/{id}', array('as' => 'ask.reply', 'uses' => 'AskController@reply_question'));
-Route::post('ask/doreply', array('as' => 'ask.doreply', 'uses' => 'AskController@doReply'));
-Route::resource('ask', 'AskController');
+Route::group(array('before' => 'roleUser'), function () {
+	Route::get('ask', array('as' => 'ask.index', 'uses' => 'AskController@index'));
+	Route::get('ask/{category}', array('as' => 'ask.question', 'uses' => 'AskController@ask_question'));
+	Route::get('questions', array('as' => 'ask.list', 'uses' => 'AskController@question_list'));
+	Route::post('ask/store', array('as' => 'ask.store', 'uses' => 'AskController@store'));
+	Route::get('answer/{id}', array('as' => 'ask.answer', 'uses' => 'AskController@show_answer'));
+});
+
+Route::group(array('before' => 'roleExpert'), function () {
+	Route::get('reply/{id}', array('as' => 'ask.reply', 'uses' => 'AskController@reply_question'));
+	Route::post('ask/doreply', array('as' => 'ask.doreply', 'uses' => 'AskController@doReply'));
+});
 /* END OF QUESTIONS RELATED */
 
 /* EXPERT RELATED */
-Route::get('expert/{category}', array('as' => 'expert.show_list', 'uses' => 'ExpertController@show_list'));
-Route::resource('expert', 'ExpertController');
+Route::group(array('before' => 'roleUser'), function () {
+	Route::get('expert', array('as' => 'expert.index', 'uses' => 'ExpertController@index'));
+	Route::get('expert/{category}', array('as' => 'expert.show_list', 'uses' => 'ExpertController@show_list'));
+});
 /* END OF EXPERT RELATED */
