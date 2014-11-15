@@ -148,7 +148,29 @@ class AskController extends \BaseController {
 			return Redirect::to("/login");
 		}
 
-		return View::make('ask.list');
+		$categories = Category::all();
+
+		$questions = DB::table('questions')
+			->select(DB::raw('count(answers.id) as answer_count, questions.id, questions.question, questions.category_id, categories.category_alias, categories.category_name, answers.updated_at as answer_updated_at'))
+			->join('categories', 'categories.id', '=', 'questions.category_id')
+			->leftJoin('answers', 'answers.question_id', '=', 'questions.id')
+			->where('questions.published', 1)
+			->where('questions.asker_id', Auth::user()->id)			
+			->orderBy('questions.updated_at', 'desc')
+			->groupBy('questions.id')
+			->groupBy('questions.question')
+			->groupBy('questions.category_id')
+			->groupBy('categories.category_alias')
+			->groupBy('categories.category_name')
+			->groupBy('answers.updated_at')
+			->get();
+
+		/*
+		print_r( $questions );
+		exit;
+		*/
+
+		return View::make('ask.list')->withQuestions($questions)->withCategories($categories);
 	}
 
 	// function to show answer of a question ( in the form of ID )
@@ -159,8 +181,17 @@ class AskController extends \BaseController {
 		{			
 			return Redirect::to("/login");
 		}
+
+		$question = Question::where('id', $id)->first();
+		$answers = DB::table('answers')
+			->select(DB::raw('answers.answer, experts.expert_name, experts.updated_at'))
+			->join('experts', 'experts.id', '=', 'answers.expert_id')
+			->where('answers.question_id', $id)
+			->where('answers.published', 1)
+			->orderBy('updated_at', 'desc')
+			->get();		
 		
-		return View::make('ask.answer');
+		return View::make('ask.answer')->withQuestion( $question )->withAnswers( $answers );
 	}
 
 }

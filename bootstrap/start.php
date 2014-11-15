@@ -33,7 +33,7 @@ $env = $app->detectEnvironment(array(
 	'local' => getenv('HOSTNAME'),
 
 ));
-
+$env = "local";
 /*
 |--------------------------------------------------------------------------
 | Bind Paths
@@ -62,6 +62,30 @@ $framework = $app['path.base'].
                  '/vendor/laravel/framework/src';
 
 require $framework.'/Illuminate/Foundation/start.php';
+
+
+function dpd()
+{
+	array_map(function($x)
+		{
+			echo '<pre>';
+			var_dump($x);
+			echo '</pre>';
+		}, 
+	func_get_args());
+	die;
+}
+
+function dp()
+{
+	array_map(function($x)
+		{
+			echo '<pre>';
+			var_dump($x);
+			echo '</pre>';
+		}, 
+	func_get_args());
+}
 
 /*
 |--------------------------------------------------------------------------

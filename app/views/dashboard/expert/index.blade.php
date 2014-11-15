@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Answer | Providexpert</title>
+<title>Questions List | Providexpert</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -41,7 +41,7 @@
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="answer page-header-fixed page-quick-sidebar-over-content ">
+<body class="questions_list page-header-fixed page-quick-sidebar-over-content ">
 <!-- BEGIN HEADER -->
 @include('layouts.top')
 <!-- END HEADER -->
@@ -55,7 +55,7 @@
 		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<!-- BEGIN SIDEBAR MENU -->
-			@include('layouts.side', array('menu_active' => 'question', 'sub_menu_active' => 'list'))
+			@include('layouts.expert.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
@@ -88,7 +88,7 @@
 			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title page-title-img">
-			Answer
+			Questions List
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -98,58 +98,66 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<i class="fa fa-question-circle"></i>
-						<a href="/questions">Questions List</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						Answer
+						Questions List
 					</li>				
 				</ul>				
 			</div>
 			<!-- END PAGE HEADER-->
-			
-			<div class="row">
-				<div class="col-md-12 col-xs-12">
-					<div class="dashboard-stat green-haze">
-						<div class="question">
-							<b>Question :</b>
-							<div class="mt5">
-								{{ stripslashes( $question->question ) }}				
-							</div>
-						</div>
-					</div>					
-				</div>
-			</div>
 
 			<div class="row">
 				<div class="col-md-9 col-xs-12">
 
-					<div class="mb10">
-						<b>Answer(s):</b>
+					<!-- search part -->
+					<div class="col-md-6"></div>
+					<div class="text-right col-md-6 pr0">
+						<div class="form-group">
+							<label class="col-md-3 control-label mt5 pr0">Filter</label>
+							<div class="col-md-9 pr0">
+								<select class="form-control" name="question_filter">
+									<option value="all">All Status</option>
+									<option value="0">Unanswered</option>
+									<option value="1">Answered</option>
+								</select>
+							</div>
+						</div>
 					</div>
 
-					<table class="table table-striped table-hover">
+					<div class="mt20">&nbsp;</div>
+
 					<?php $i = 1; ?>
-					@foreach ( $answers as $answer )
-						<tr>
-						<td class="text-right">
-							{{ $i }}.
-						</td>
-						<td>
-							{{ stripslashes( $answer->answer ) }}
-							<!-- information regarding this answer -->
-							<div class="mt10">
-								<span class="answered">answered by {{ $answer->expert_name }}</span>
-								<span class="info"> | answered on : {{ date("n F Y", strtotime( $answer->updated_at )) }}</span>
-							</div>
-						</td>
-						</tr>
-						<?php $i++; ?>
-					@endforeach					
+					<table class="table table-striped table-hover">
+					@foreach( $questions as $question )
+					
+					<tr class="{{ ( ( $question->answer_count == 0 ) ? "question_unanswered" : "question_answered") }}">
+					<td class="text-right">
+						{{ $i }}.
+					</td>
+					<td>
+						{{ stripslashes($question->question) }}
+						<!-- information regarding this questions -->
+						<div class="mt10">
+							<?php
+							if ($question->answer_count == 0)
+							{
+								echo '<span class="unanswered">no answer yet</span>
+								| <a href="/reply/'.$question->id.'">give answers</a>';
+							}
+							else
+							{
+								echo '
+								<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+								| <a href="/answer/'.$question->id.'">view answers</a>
+								<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+							}
+							?>
+						</div>
+					</td>
+					</tr>
+					<?php $i++; ?>
+					@endforeach
 					</table>
 				</div>
-			</div>									
+			</div>
 					
 			<!-- END PAGE CONTENT-->
 		</div>
@@ -190,7 +198,7 @@
 <script src="{{ asset('assets/admin/layout/scripts/layout.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/admin/layout/scripts/quick-sidebar.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/admin/layout/scripts/demo.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/admin/pages/scripts/custom/dashboard-managed.js') }}"></script>
+<script src="{{ asset('assets/admin/pages/scripts/custom/ask.js') }}"></script>
 <script src="{{ asset('assets/admin/pages/scripts/custom/providexpert.js') }}"></script>
 <script>
 jQuery(document).ready(function() {       
@@ -199,7 +207,7 @@ jQuery(document).ready(function() {
 	Layout.init(); // init current layout
 	QuickSidebar.init(); // init quick sidebar
 	Demo.init(); // init demo features
-	DashboardManaged.init();
+	AskExpertManaged.init();
 });
 </script>
 </body>

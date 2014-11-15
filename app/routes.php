@@ -19,7 +19,7 @@ Route::get('/', function()
 /* END OF MAIN PAGE */
 
 /* LOGIN RELATED */
-Route::get('login', 'LoginController@index');
+Route::get('login', array('as' => 'login', 'uses' => 'LoginController@index'));
 Route::post('login/forgot_password', 'LoginController@doForgotPassword');
 Route::get('login/reset_password', array('as'=>'reset_admin_password','uses'=>'LoginController@resetPassword'));
 Route::post('login/reset_password', 'LoginController@doResetPassword');
@@ -38,8 +38,14 @@ Route::get('/login', function()
 */
 
 /* DASHBOARD RELATED */
-Route::get('/dashboard', 'DashboardController@index');
 Route::resource('dashboard', 'DashboardController');
+Route::group(array('before' => 'roleUser'), function () {
+	Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'DashboardController@index'));
+});
+
+Route::group(array('before' => 'roleExpert'), function () {
+	Route::get('/expert/dashboard', array('as' => 'expert.dashboard', 'uses' => 'DashboardController@expertIndex'));
+});
 /* END OF DASHBOARD RELATED */
 
 /* TOPUP RELATED */

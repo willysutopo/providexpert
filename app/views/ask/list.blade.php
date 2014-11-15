@@ -106,26 +106,14 @@
 
 			<div class="tabbable-line">
 				<ul class="nav nav-tabs ">
-					<li class="active">
-						<a href="#health_tab_content" data-toggle="tab">
-						Health </a>
-					</li>
-					<li>
-						<a href="#property_tab_content" data-toggle="tab">
-						Property </a>
-					</li>
-					<li>
-						<a href="#food_tab_content" data-toggle="tab">
-						Food </a>
-					</li>
-					<li>
-						<a href="#love_tab_content" data-toggle="tab">
-						Love </a>
-					</li>
-					<li>
-						<a href="#education_tab_content" data-toggle="tab">
-						Education </a>
-					</li>
+					<?php $j = 0; ?>
+					@foreach ( $categories as $category )
+						<li class="{{ ( ( $j == 0 ) ? "active" : "" ) }}">
+						<a href="#{{ $category->category_alias }}_tab_content" data-toggle="tab">
+							{{ $category->category_name }} </a>
+						</li>
+					<?php $j++; ?>
+					@endforeach					
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane fade active in" id="health_tab_content">
@@ -139,10 +127,10 @@
 									<div class="form-group">
 										<label class="col-md-3 control-label mt5 pr0">Filter</label>
 										<div class="col-md-9 pr0">
-											<select class="form-control">
-												<option>All Status</option>
-												<option>Unanswered</option>
-												<option>Answered</option>
+											<select class="form-control" name="health_filter">
+												<option value="all">All Status</option>
+												<option value="0">Unanswered</option>
+												<option value="1">Answered</option>
 											</select>
 										</div>
 									</div>
@@ -150,62 +138,276 @@
 
 								<div class="mt20">&nbsp;</div>
 
+								<?php $i = 1; ?>
 								<table class="table table-striped table-hover">
-								<tr>
-								<td class="text-right">
-									1.
-								</td>
-								<td>
-									Saya mengalami keluhan. Terkadang, di bagian bawah sebelah kiri dada terasa sakit. Serasa bagian dalam anggota tubuh sedang diremas. Saya memang sering makan enak tanpa memikirkan efek samping dari makan enak tersebut. Apakah ada hubungannya makan enak dengan sakit yang saya alami tersebut? Sebelumnya, terima kasih untuk menjawab pertanyaan saya ini.
-									<!-- information regarding this questions -->
-									<div class="mt10">
-										<span class="answered">answered by 3 experts</span>
-										| <a href="/answer/1">view answers</a>
-										<span class="info"> | last answered : 10 November 2014</span>
-									</div>
-								</td>
-								</tr>
-								<tr>
-								<td class="text-right">
-									2.
-								</td>
-								<td>
-									Anak saya terkadang tiba-tiba bisa mimisan. Padahal, saya sudah sering memberinya minum air putih sehingga tidak kering. Apakah mungkin disebabkan dia suka makan goreng-gorengan atau cemilan snack? Lalu saya dengar makan vitamin juga bisa berakibat panas. Apakah benar demikian? Mohon bantuannya. Terima kasih banyak.
-									<!-- information regarding this questions -->
-									<div class="mt10">
-										<span class="unanswered">no answer yet</span>
-									</div>
-								</td>
-								</tr>
-								<tr>
-								<td class="text-right">
-									3.
-								</td>
-								<td>
-									Saya akhir-akhir ini suka mengalami gangguan sakit kepala yang sangat hebat, terutama jika kondisi rumah tangga sedang kacau balau. Jika terjadi kericuhan, pasti kambuh. Apakah bagus untuk mengkonsumsi Panadol merah? Jika sakit sekali, saya langsung memakan 2 sekaligus. Suatu hari, saya nekad pernah memakan 3 sekaligus. Untungnya, tidak terjadi apa-apa. Apakah ada efek sampingnya? Lalu, solusi apakah yang bisa anda anjurkan untuk saya? Terima kasih.
-									<!-- information regarding this questions -->
-									<div class="mt10">
-										<span class="answered">answered by 1 expert</span>
-										| <a href="/answer/1">view answers</a>
-										<span class="info"> | last answered : 12 November 2014</span>
-									</div>
-								</td>
-								</tr>
+								@foreach( $questions as $question )
+									@if ( $question->category_alias == "health" )
+										<tr class="{{ ( ( $question->answer_count == 0 ) ? "health_unanswered" : "health_answered") }}">
+										<td class="text-right">
+											{{ $i }}.
+										</td>
+										<td>
+											{{ stripslashes($question->question) }}
+											<!-- information regarding this questions -->
+											<div class="mt10">
+												<?php
+												if ($question->answer_count == 0)
+												{
+													echo '<span class="unanswered">no answer yet</span>';
+												}
+												else
+												{
+													echo '
+													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+													| <a href="/answer/'.$question->id.'">view answers</a>
+													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+												}
+												?>
+											</div>
+										</td>
+										</tr>
+										<?php $i++; ?>
+									@endif									
+								@endforeach
 								</table>
 							</div>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="property_tab_content">
-						
+
+						<!-- inside property tab -->
+						<div class="row">
+							<div class="col-md-9 col-xs-12">
+
+								<!-- search part -->
+								<div class="col-md-6"></div>
+								<div class="text-right col-md-6 pr0">
+									<div class="form-group">
+										<label class="col-md-3 control-label mt5 pr0">Filter</label>
+										<div class="col-md-9 pr0">
+											<select class="form-control" name="property_filter">
+												<option value="all">All Status</option>
+												<option value="0">Unanswered</option>
+												<option value="1">Answered</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="mt20">&nbsp;</div>
+
+								<?php $i = 1; ?>
+								<table class="table table-striped table-hover">
+								@foreach( $questions as $question )
+									@if ( $question->category_alias == "property" )
+										<tr>
+										<td class="text-right">
+											{{ $i }}.
+										</td>
+										<td>
+											{{ stripslashes($question->question) }}
+											<!-- information regarding this questions -->
+											<div class="mt10">
+												<?php
+												if ($question->answer_count == 0)
+												{
+													echo '<span class="unanswered">no answer yet</span>';
+												}
+												else
+												{
+													echo '
+													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+													| <a href="/answer/'.$question->id.'">view answers</a>
+													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+												}
+												?>
+											</div>
+										</td>
+										</tr>
+										<?php $i++; ?>
+									@endif									
+								@endforeach
+								</table>
+							</div>
+						</div>
+
 					</div>
 					<div class="tab-pane fade" id="food_tab_content">
 						
+						<!-- inside property tab -->
+						<div class="row">
+							<div class="col-md-9 col-xs-12">
+
+								<!-- search part -->
+								<div class="col-md-6"></div>
+								<div class="text-right col-md-6 pr0">
+									<div class="form-group">
+										<label class="col-md-3 control-label mt5 pr0">Filter</label>
+										<div class="col-md-9 pr0">
+											<select class="form-control" name="food_filter">
+												<option value="all">All Status</option>
+												<option value="0">Unanswered</option>
+												<option value="1">Answered</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="mt20">&nbsp;</div>
+
+								<?php $i = 1; ?>
+								<table class="table table-striped table-hover">
+								@foreach( $questions as $question )
+									@if ( $question->category_alias == "food" )
+										<tr>
+										<td class="text-right">
+											{{ $i }}.
+										</td>
+										<td>
+											{{ stripslashes($question->question) }}
+											<!-- information regarding this questions -->
+											<div class="mt10">
+												<?php
+												if ($question->answer_count == 0)
+												{
+													echo '<span class="unanswered">no answer yet</span>';
+												}
+												else
+												{
+													echo '
+													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+													| <a href="/answer/'.$question->id.'">view answers</a>
+													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+												}
+												?>
+											</div>
+										</td>
+										</tr>
+										<?php $i++; ?>
+									@endif
+								@endforeach
+								</table>
+							</div>
+						</div>
+
 					</div>
 					<div class="tab-pane fade" id="love_tab_content">
 						
+						<!-- inside property tab -->
+						<div class="row">
+							<div class="col-md-9 col-xs-12">
+
+								<!-- search part -->
+								<div class="col-md-6"></div>
+								<div class="text-right col-md-6 pr0">
+									<div class="form-group">
+										<label class="col-md-3 control-label mt5 pr0">Filter</label>
+										<div class="col-md-9 pr0">
+											<select class="form-control" name="love_filter">
+												<option value="all">All Status</option>
+												<option value="0">Unanswered</option>
+												<option value="1">Answered</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="mt20">&nbsp;</div>
+
+								<?php $i = 1; ?>
+								<table class="table table-striped table-hover">
+								@foreach( $questions as $question )
+									@if ( $question->category_alias == "love" )
+										<tr>
+										<td class="text-right">
+											{{ $i }}.
+										</td>
+										<td>
+											{{ stripslashes($question->question) }}
+											<!-- information regarding this questions -->
+											<div class="mt10">
+												<?php
+												if ($question->answer_count == 0)
+												{
+													echo '<span class="unanswered">no answer yet</span>';
+												}
+												else
+												{
+													echo '
+													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+													| <a href="/answer/'.$question->id.'">view answers</a>
+													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+												}
+												?>
+											</div>
+										</td>
+										</tr>
+										<?php $i++; ?>
+									@endif
+								@endforeach
+								</table>
+							</div>
+						</div>
+
 					</div>
 					<div class="tab-pane fade" id="education_tab_content">
 						
+						<!-- inside property tab -->
+						<div class="row">
+							<div class="col-md-9 col-xs-12">
+
+								<!-- search part -->
+								<div class="col-md-6"></div>
+								<div class="text-right col-md-6 pr0">
+									<div class="form-group">
+										<label class="col-md-3 control-label mt5 pr0">Filter</label>
+										<div class="col-md-9 pr0">
+											<select class="form-control" name="education_filter">
+												<option value="all">All Status</option>
+												<option value="0">Unanswered</option>
+												<option value="1">Answered</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="mt20">&nbsp;</div>
+
+								<?php $i = 1; ?>
+								<table class="table table-striped table-hover">
+								@foreach( $questions as $question )
+									@if ( $question->category_alias == "education" )
+										<tr>
+										<td class="text-right">
+											{{ $i }}.
+										</td>
+										<td>
+											{{ stripslashes($question->question) }}
+											<!-- information regarding this questions -->
+											<div class="mt10">
+												<?php
+												if ($question->answer_count == 0)
+												{
+													echo '<span class="unanswered">no answer yet</span>';
+												}
+												else
+												{
+													echo '
+													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+													| <a href="/answer/'.$question->id.'">view answers</a>
+													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+												}
+												?>
+											</div>
+										</td>
+										</tr>
+										<?php $i++; ?>
+									@endif
+								@endforeach
+								</table>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -250,7 +452,7 @@
 <script src="{{ asset('assets/admin/layout/scripts/layout.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/admin/layout/scripts/quick-sidebar.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/admin/layout/scripts/demo.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/admin/pages/scripts/custom/dashboard-managed.js') }}"></script>
+<script src="{{ asset('assets/admin/pages/scripts/custom/ask.js') }}"></script>
 <script src="{{ asset('assets/admin/pages/scripts/custom/providexpert.js') }}"></script>
 <script>
 jQuery(document).ready(function() {       
@@ -259,7 +461,7 @@ jQuery(document).ready(function() {
 	Layout.init(); // init current layout
 	QuickSidebar.init(); // init quick sidebar
 	Demo.init(); // init demo features
-	DashboardManaged.init();
+	AskManaged.init();
 });
 </script>
 </body>
