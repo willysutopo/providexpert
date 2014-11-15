@@ -31,19 +31,27 @@ class DashboardController extends \BaseController {
 			->first();
 		;
 
-		$categories = Category::all();
-
 		// Get question that need his expertise
-		$questions = Question::where('category_id', '=', $expert->category_id)
+		$questions = DB::table('questions')
+			->select(DB::raw('count(answers.id) as answer_count, questions.id, questions.question, questions.category_id, categories.category_name, answers.updated_at as answer_updated_at'))
+			->join('categories', 'categories.id', '=', 'questions.category_id')
+			->leftJoin('answers', 'answers.question_id', '=', 'questions.id')
+			
+			->where('questions.published', 1)
+			->where('category_id', '=', $expert->category_id)
 			->orWhere('specific_expert_id', '=', $expert->id)
-			->with('answers')
-			->with('category')
-			->get()
-		;
+
+			->orderBy('questions.updated_at', 'desc')
+			->groupBy('questions.id')
+			->groupBy('questions.question')
+			->groupBy('questions.category_id')
+			->groupBy('categories.category_alias')
+			->groupBy('categories.category_name')
+			->groupBy('answers.updated_at')
+			->get();
 		
 		return View::make('dashboard.expert.index')
 			->withUser( Auth::user() )
-			->with('categories', $categories)
 			->with('questions', $questions)
 		;
 	}
