@@ -78,12 +78,16 @@ Route::group(array('before' => 'roleUser'), function () {
 
 
 /* PROFILE RELATED */
+
 Route::group(array('before' => 'roleUserOrExpert'), function () {
 	Route::get('profile', array('as' => 'profile.index', 'uses' => 'ProfileController@index'));
 });
 Route::group(array('before' => 'roleUser'), function () {
 	Route::put('profile/me', array('as' => 'profile.update.me', 'uses' => 'ProfileController@userUpdateMe'));
+	Route::get('profile/paypal', array('as' => 'profile.paypal', 'uses' => 'ProfileController@paypal'));
+	Route::post('profile/paypal/sync', array('as' => 'profile.paypal.sync', 'uses' => 'ProfileController@paypalSync'));	
 });
 Route::group(array('before' => 'roleExpert'), function () {
 	Route::put('expert/profile/me', array('as' => 'expert.profile.update.me', 'uses' => 'ProfileController@expertUpdateMe'));
 });
+

@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>My Profile | Providexpert</title>
+<title>Paypal Setting | Providexpert</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -88,7 +88,7 @@
 			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			My Profile
+			Paypal Setting
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -98,131 +98,77 @@
 						<i class="fa fa-angle-right"></i>
 					</li>					
 					<li>
-						<i class="icon-user"></i> My Profile
+						<i class="icon-user"></i>
+						<a href="{{route("profile.index")}}"> My Profile</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<i class="fa fa-credit-card"></i>
+						Paypal Setting
 					</li>
 				</ul>				
 			</div>
 			<!-- END PAGE HEADER-->
-			<div class="row" style="margin-bottom: 30px">
-				<div class="col-md-6 col-xs-12">
-					@if($user->paypal)
-					<div class="portlet box blue">
-						<div class="portlet-title">
-							<div class="caption">
-								<i class="fa fa-credit-card"></i>Paypal Info
-							</div>
-							<div class="actions">
-								<a href="{{route("profile.paypal")}}" class="btn btn-success">Edit</a>
-							</div>
-						</div>
-						<div class="portlet-body">	
-							<table class="table table-hover">
-								<thead>
-								<tr>
-									<th>
-										 Token
-									</th>
-									<th>
-										 Expiration Date
-									</th>
-									<th>
-										 Card Type
-									</th>
-									<th>
-										 Masked Number
-									</th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr>
-									<td>
-										{{$user->paypal->token}}
-									</td>
-									<td>
-										 {{$user->paypal->expired}}
-									</td>
-									<td>
-										 {{$user->paypal->type}}
-									</td>
-									<td>
-										 {{$user->paypal->masked}}
-									</td>
-								</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>	
-					@else
-						<a href="{{route("profile.paypal")}}" class="btn btn-success">Paypal Setting</a>
-					@endif
-				</div>
-			</div>
-
-			@if (Session::has('message'))
-				<div class="bg-success success_padder success_margin pt20 pb20 pl20 pr20 mb20">
-					{{{ Session::get('message') }}}
-				</div>
-			@endif
-
 			<div class="row">
-				{{ Form::model($user, array(
-					'route' => 'profile.update.me',
-					'role' => 'form',
-					'class' => 'form-horizontal',
-					'method' => 'PUT',
-				)) }}
+				<div class="col-md-6 col-xs-12">
+@if (Session::has('done'))
+   <div class="alert alert-success">{{ Session::get('done') }}<button type="button" class="close" data-close="alert"></button></div>
+@endif
+@if (Session::has('fail'))
+   <div class="alert alert-danger">{{ Session::get('fail') }}<button type="button" class="close" data-close="alert"></button></div>
+@endif
+					<form action="{{ route('profile.paypal.sync') }}" class="form-horizontal" method="post">
+						<div class="form-body">
+							<div class="form-group">
+								<label class="col-md-3 control-label">Credit Card</label>
+								<div class="col-md-9">
+									<div class="input-inline input-medium">
+										<div class="input-group">
+											<span class="input-group-addon">
+											<i class="fa fa-credit-card"></i>
+											</span>
+											<input name="cc_num" type="text" class="form-control" placeholder="Credit Card Number">
+										</div>
+									</div>
+									<span class="help-block"><i class="text text-success">Our system not collect your confident information as CC Number for high security reason.</i></span>
+									<span class="text text-danger">{{ $errors->first('cc_num'); }}</span>
+								</div>
+							</div>						
+							<div class="form-group">
+								<label class="col-md-3 control-label">Cvv</label>
+								<div class="col-md-3">
+									<input name="cvv_num" type="text" maxlength="4" size="4" class="form-control">
+									<span class="text text-danger">{{ $errors->first('cvv_num'); }}</span>
+								</div>
+								<span class="help-block"><i class="text text-success">Let see on back your Credit Card, usually 3 Number.</i></span>
+								
+							</div>
+							<div class="form-group">
+									<label class="col-md-3 control-label">Expired</label>
+									<div class="col-md-3">
+										<input name="month" type="text" maxlength="2" size="2" class="form-control" placeholder="Month">
+										<span class="text text-danger">{{ $errors->first('month'); }}</span>
+									</div>
+									<div class="col-md-3">
+										<input name="year" type="text" maxlength="4" size="4" class="form-control" placeholder="Year">
+										<span class="text text-danger">{{ $errors->first('year'); }}</span>
+									</div>
 
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="fullname">Name</label>
-						<div class="col-sm-8">
-							{{ Form::text('fullname', null, array('class' => 'form-control')) }}
-							{{ $errors->first('fullname', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
-						</div>
-					</div>
 
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="email">Email</label>
-						<div class="col-sm-8">
-							{{ Form::input('email', 'email', null, array('class' => 'form-control')) }}
-							{{ $errors->first('email', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
-						</div>
-					</div>
+							</div>
+							<div class="form-group">
+									<label class="col-md-3 control-label"></label>
+									<div class="col-md-3">
+										<button type="submit" class="btn btn-success">Save</button>
+									</div>
 
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="address">Address</label>
-						<div class="col-sm-8">
-							{{ Form::textarea('address', null, array('class' => 'form-control', 'rows' => 3)) }}
-							{{ $errors->first('address', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+							</div>
 						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="city">City</label>
-						<div class="col-sm-8">
-							{{ Form::text('city', null, array('class' => 'form-control')) }}
-							{{ $errors->first('city', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="phone">Phone</label>
-						<div class="col-sm-8">
-							{{ Form::input('tel', 'phone', null, array('class' => 'form-control')) }}
-							{{ $errors->first('phone', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-sm-offset-4 col-sm-8">
-							{{ Form::submit('Save Changes', array('class' => 'btn blue-madison')) }}
-						</div>
-					</div>
-					
+					</form>
 				</div>
-				
-
-				{{ Form::close() }}
+				<div class="col-md-6 col-xs-12">
+	
+				</div>
 			</div>
 			
 			<!-- END PAGE CONTENT-->
