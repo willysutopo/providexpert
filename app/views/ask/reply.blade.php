@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Answer | Providexpert</title>
+<title>Reply A Question | Providexpert</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -41,7 +41,7 @@
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="answer page-header-fixed page-quick-sidebar-over-content ">
+<body class="reply_question page-header-fixed page-quick-sidebar-over-content ">
 <!-- BEGIN HEADER -->
 @include('layouts.top')
 <!-- END HEADER -->
@@ -55,7 +55,7 @@
 		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<!-- BEGIN SIDEBAR MENU -->
-			@include('layouts.side', array('menu_active' => 'question', 'sub_menu_active' => 'list'))
+			@include('layouts.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
@@ -88,7 +88,7 @@
 			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title page-title-img">
-			Answer
+			Reply A Question
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -98,17 +98,17 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<i class="fa fa-question-circle"></i>
-						<a href="/questions">Questions List</a>
-						<i class="fa fa-angle-right"></i>
+						Reply A Question
 					</li>
-					<li>
-						Answer
-					</li>				
 				</ul>				
 			</div>
-			<!-- END PAGE HEADER-->
-			
+
+			@if (Session::has('message'))
+				<div class="bg-success success_padder success_margin pt20 pb20 pl20 pr20 mb20">
+					{{{ Session::get('message') }}}
+				</div>
+			@endif
+
 			<div class="row">
 				<div class="col-md-12 col-xs-12">
 					<div class="dashboard-stat green-haze">
@@ -122,35 +122,24 @@
 				</div>
 			</div>
 
+			<!-- END PAGE HEADER-->
+			{{ Form::open(array('route' => 'ask.doreply', 'class'=>'form-horizontal', 'role'=>'form')) }}
 			<div class="row">
-				<div class="col-md-9 col-xs-12">
-
-					<div class="mb10">
-						<b>Answer(s):</b>
-					</div>
-
-					<table class="table table-striped table-hover">
-					<?php $i = 1; ?>
-					@foreach ( $answers as $answer )
-						<tr>
-						<td class="text-right">
-							{{ $i }}.
-						</td>
-						<td>
-							{{ stripslashes( $answer->answer ) }}
-							<!-- information regarding this answer -->
-							<div class="mt10">
-								<span class="answered">answered by {{ $answer->expert_name }}</span>
-								<span class="info"> | answered on : {{ date("j F Y", strtotime( $answer->updated_at )) }}</span>
-							</div>
-						</td>
-						</tr>
-						<?php $i++; ?>
-					@endforeach					
-					</table>
+				<div class="col-md-8 col-xs-12">				
+					<label>Your Reply</label>
+					<input type="hidden" name="question_id" value="{{ $question->id }}" />
+					{{ Form::textarea('reply', '', array('rows' => 8, 'id' => 'reply', 'class' => 'form-control ')) }}
+					{{ $errors->first('reply', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
 				</div>
-			</div>									
-					
+			</div>			
+			<div class="mt20"></div>
+			<div class="row">
+				<div class="col-md-4 col-xs-12">
+					<button class="btn green" type="submit"><i class="fa fa-save"></i> Submit</button>
+					<a href="/expert/dashboard" class="btn default"><i class="fa fa-undo"></i> Cancel</a>
+				</div>
+			</div>
+			{{ Form::close() }}
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>
