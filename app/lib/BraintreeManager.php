@@ -1,6 +1,6 @@
 <?php
 //
-// Braintree Manager file
+// Braintree Manager
 //
 /*
 	testing CC Number
@@ -9,7 +9,6 @@
 	4012888888881881
 
 	BRAINTREE PHP SDK EXTREMLY SIMPLE AND EASY FOR USAGE
-
 */
 
 class BraintreeManager{
