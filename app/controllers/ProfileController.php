@@ -98,6 +98,14 @@ class ProfileController extends \BaseController {
 			if ( count( $file ) > 0 )
 				$user->photo = $newfile_name;
 			$user->save();
+
+			//
+			// save user to braintree
+			// 
+			$brain = new BraintreeManager;
+			$name = explode(" ", $input['fullname']);
+			$brain->updateUser($user->id, $name[0], (isset($name[1]))?$name[1]:"");
+
 			return Redirect::route('profile.index')
 				->withMessage('Profile updated')
 			;
