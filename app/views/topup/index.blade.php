@@ -137,7 +137,7 @@
 			<div class="row">
 				<div class="col-md-12 col-xs-12">
 					<div class="mt10">
-						<button class="btn green" type="button" id="btn_pay"><i class="fa fa-credit-card"></i> Pay via Paypal</button>
+						<button class="btn green" type="button" id="btn_pay"><i class="fa fa-credit-card"></i> Pay via Credit Card</button>
 						<a href="/" class="btn default"><i class="fa fa-undo"></i> Cancel</a>
 					</div>
 				</div>
@@ -206,7 +206,7 @@
 <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="alert alert-danger text-center">Currently Your Paypal Setting not configured.</div>
+      <div class="alert alert-danger text-center">Currently Your Credit Card not configured.</div>
       <div class="modal-body">
 			<form action="{{ route('profile.paypal.sync') }}" class="form-horizontal" method="post">
 				{{Form::token()}}
