@@ -165,3 +165,15 @@ var AskExpertManaged = function () {
     };
 
 }();
+
+var AskQuestion = function () {
+
+    $(".submit_question_btn").click(function()
+    {
+        if ( confirm("Are you sure to submit? Your submission will cost you 2 credits.") )
+        {
+            $("#form_ask_question").submit();
+        }
+    });
+
+}();

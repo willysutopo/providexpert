@@ -33,6 +33,19 @@ class AskController extends \BaseController {
 			return Redirect::route('ask.question',[$category])->withErrors($validator)->withInput();
 		}
 
+		// check credits first
+		$user = User::where('id', Auth::user()->id)->first();
+		$credits = $user->credits;
+
+		if ( $credits < 2 )
+		{
+			return Redirect::route('ask.question',[$category])->withErrormsg('You do not have sufficient credits. Please top up first before you can post any question.');
+		}
+
+		// deduct credits
+		$user->credits = $credits - 2;
+		$user->update();
+
 		$question = addslashes(Input::get('question'));
 		$category_id = Input::get('category_id');
 		$asker_id = Auth::user()->id;

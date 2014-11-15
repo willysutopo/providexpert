@@ -108,6 +108,12 @@
 				</ul>				
 			</div>
 
+			@if (Session::has('errormsg'))
+				<div class="bg-danger success_padder success_margin pt20 pb20 pl20 pr20 mb20">
+					{{{ Session::get('errormsg') }}}
+				</div>
+			@endif
+
 			@if (Session::has('message'))
 				<div class="bg-success success_padder success_margin pt20 pb20 pl20 pr20 mb20">
 					{{{ Session::get('message') }}}. Please go to <a href="/questions">Question List</a> to view your questions
@@ -115,7 +121,7 @@
 			@endif
 
 			<!-- END PAGE HEADER-->
-			{{ Form::open(array('route' => 'ask.store', 'class'=>'form-horizontal', 'role'=>'form')) }}
+			{{ Form::open(array('route' => 'ask.store', 'class'=>'form-horizontal', 'role'=>'form', 'id' => 'form_ask_question')) }}
 			<div class="row">
 				<div class="col-md-8 col-xs-12">
 					<input type="hidden" name="category_id" value="{{ $category->id }}" />
@@ -135,7 +141,7 @@
 			<div class="mt20"></div>
 			<div class="row">
 				<div class="col-md-4 col-xs-12">
-					<button class="btn green" type="submit"><i class="fa fa-save"></i> Submit</button>
+					<button class="btn green submit_question_btn" type="button"><i class="fa fa-save"></i> Submit</button>
 					<a href="/ask" class="btn default"><i class="fa fa-undo"></i> Cancel</a>
 				</div>
 			</div>
@@ -179,7 +185,7 @@
 <script src="{{ asset('assets/admin/layout/scripts/layout.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/admin/layout/scripts/quick-sidebar.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/admin/layout/scripts/demo.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/admin/pages/scripts/custom/dashboard-managed.js') }}"></script>
+<script src="{{ asset('assets/admin/pages/scripts/custom/ask.js') }}"></script>
 <script src="{{ asset('assets/admin/pages/scripts/custom/providexpert.js') }}"></script>
 <script>
 jQuery(document).ready(function() {       
@@ -188,7 +194,7 @@ jQuery(document).ready(function() {
 	Layout.init(); // init current layout
 	QuickSidebar.init(); // init quick sidebar
 	Demo.init(); // init demo features
-	DashboardManaged.init();
+	AskQuestion.init();
 });
 </script>
 </body>
