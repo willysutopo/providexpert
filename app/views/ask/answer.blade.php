@@ -141,7 +141,7 @@
 							<!-- information regarding this answer -->
 							<div class="mt10">
 								<span class="answered">answered by {{ $answer->expert_name }}</span>
-								<span class="info"> | answered on : {{ date("n F Y", strtotime( $answer->updated_at )) }}</span>
+								<span class="info"> | answered on : {{ date("j F Y", strtotime( $answer->updated_at )) }}</span>
 							</div>
 						</td>
 						</tr>

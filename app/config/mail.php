@@ -30,7 +30,7 @@ return array(
 
 	//'host' => 'smtp.mailgun.org',
 	//'host' => 'smtp.gmail.com',
-	'host' => 'smtp.mandrillapp.com',
+	'host' => 'email-smtp.us-west-2.amazonaws.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return array(
 	*/
 
 	//'from' => array(''),
-	'from' => array('address' => 'info@providexpert.com', 'name' => 'Providexpert'),
+	'from' => array('address' => 'willy.sutopo@msea.vc', 'name' => 'Willy'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -83,7 +83,7 @@ return array(
 	|
 	*/
 
-	'username' => 'willysutopo@hotmail.com',
+	'username' => 'AKIAJAENYF63ZUPD75IQ',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ return array(
 	|
 	*/
 
-	'password' => 'pZnW9YTulD4bYMFud9-sXA',
+	'password' => 'Ato94nlzPKxy+F6qKVIWg0v1Mm3Kd5vc7LOetAKndGgd',
 
 	/*
 	|--------------------------------------------------------------------------

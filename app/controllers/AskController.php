@@ -200,6 +200,31 @@ class AskController extends \BaseController {
 		$expert = Expert::where('user_id', Auth::user()->id)->first();
 		$expert_id = $expert->id;
 
+		// EMAIL SECTION
+		// ------------------------------------------
+		// have to get the asker of the question so that we can send email to the asker that
+		// his question has already been replied
+		$question = DB::table('questions')
+			->select('users.email, users.fullname')
+			->join('users', 'users.id', '=', 'questions.asker_id')
+			->where('questions.id', $question_id)
+			->first();
+
+		$to_email = $question->email;
+		$to_name = $question->fullname;
+		$subject = "An expert has replied to your query";
+		$data_mail = array('content' => $ses_content);
+
+		// begin sending email
+		Mail::send('emails.test', $data_mail, function($message) use ($to_name, $to_email, $subject )
+		{			
+			$message->to($to_email, $to_name);
+			$message->subject($subject);
+		});
+
+		// END OF EMAIL SECTION
+		// ------------------------------------------
+
 		$data = new Answer();
 		$data->answer = $reply;
 		$data->question_id = $question_id;
