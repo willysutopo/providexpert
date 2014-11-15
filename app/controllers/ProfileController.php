@@ -19,13 +19,16 @@ class ProfileController extends \BaseController {
 		if (Entrust::hasRole('Expert')) {
 			$user = Auth::user()->with('expert')->first();
 
-			// dpd($user->toArray());
+			$categories = Category::all(array('id', 'category_name'));
+			$categoryList = [];
+			foreach ($categories as $category) {
+				$categoryList[$category->id] = $category->category_name;
+			}
 
-			$categories = Category::all();
 
 			return View::make('profile.expert')
 				->with('user', $user)
-				->with('categories', $categories)
+				->with('categoryList', $categoryList)
 			;
 		} else {
 			$user = Auth::user();
@@ -67,7 +70,46 @@ class ProfileController extends \BaseController {
 
 	public function expertUpdateMe()
 	{
+		$input = Input::except('q', '_method', '_token');
 
+		$validator = Validator::make($input, array(
+			'expert_name' => 'required',
+			'email' => 'required|email',
+			'category_id' => 'required',
+			'expertises' => 'required',
+			'address' => 'required',
+			'phone' => 'required',
+		));
+		$validator->setAttributeNames(array(
+			'expert_name' => 'name',
+			'category_id' => 'category',
+		));
+
+		if ($validator->fails()) {
+			return Redirect::back()
+				->withErrors($validator)
+				->withInput()
+			;
+		} else {
+			$user = Auth::user()->with('expert')->first();
+			$user->fill(array(
+				'email' => $input['email'],
+				'address' => $input['address'],
+				'phone' => $input['phone'],
+			));
+
+			$user->expert->fill(array(
+				'expert_name' => $input['expert_name'],
+				'category_id' => $input['category_id'],
+				'expertises' => $input['expertises'],
+			));
+
+			$user->push();
+
+			return Redirect::route('profile.index')
+				->withMessage('Profile updated')
+			;
+		}
 	}
 
 	// do register new account

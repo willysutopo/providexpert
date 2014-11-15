@@ -1,6 +1,10 @@
 <?php
 
 class Expert extends Eloquent {
+	protected $fillable = array(
+		'expert_name', 'category_id', 'expertises', 'pic_link', 'published'
+	);
+
 	public function category()
 	{
 		return $this->belongsTo('Category');

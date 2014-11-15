@@ -119,7 +119,7 @@
 				)) }}
 
 				<div class="col-sm-6">
-					
+
 					<div class="form-group">
 						<label class="col-sm-4 control-label" for="expert_name">Name</label>
 						<div class="col-sm-8">
@@ -128,7 +128,50 @@
 						</div>
 					</div>
 
-					
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="email">Email</label>
+						<div class="col-sm-8">
+							{{ Form::input('email', 'email', Input::old('email', $user->email), array('class' => 'form-control')) }}
+							{{ $errors->first('email', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="category_id">Category</label>
+						<div class="col-sm-8">
+							{{ Form::select(
+							'category_id',
+							['' => '-- Please select --'] + $categoryList,
+							Input::old('category_id', $user->expert->category_id), 
+							array('class' => 'form-control required')
+						) }}
+							{{ $errors->first('category_id', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="expertises">Expertises</label>
+						<div class="col-sm-8">
+							{{ Form::text('expertises', Input::old('expertises', $user->expert->expertises), array('class' => 'form-control')) }}
+							{{ $errors->first('expertises', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="address">Address</label>
+						<div class="col-sm-8">
+							{{ Form::textarea('address', Input::old('address', $user->address), array('class' => 'form-control', 'rows' => 3)) }}
+							{{ $errors->first('address', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="phone">Phone</label>
+						<div class="col-sm-8">
+							{{ Form::input('tel', 'phone', Input::old('phone', $user->phone), array('class' => 'form-control')) }}
+							{{ $errors->first('phone', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>					
 
 					<div class="row">
 						<div class="col-sm-offset-4 col-sm-8">
