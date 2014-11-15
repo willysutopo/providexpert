@@ -1,6 +1,4 @@
-var ReplyQuestion = function () {
-
-    alert("TEST");    
+var ReplyQuestion = function () {    
     /*
     tinymce.init({
         selector: "textarea",
@@ -18,6 +16,8 @@ var ReplyQuestion = function () {
       });
     }
     */
+
+    /*
     tinymce.init({
     selector: "textarea",
     plugins: [
@@ -27,6 +27,7 @@ var ReplyQuestion = function () {
     ],
     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
     autosave_ask_before_unload: false
+    */
 });
 
 }();
