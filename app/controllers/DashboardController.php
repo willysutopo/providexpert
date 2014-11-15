@@ -9,12 +9,6 @@ class DashboardController extends \BaseController {
 	 */
 	public function index()
 	{
-		// if user has not logged in
-		if ( !Auth::check() )
-		{			
-			return Redirect::to("/login");
-		}
-
 		$user = DB::table('users')
 			->select(DB::raw('count(questions.id) as question_count, count(answers.id) as answer_count, users.id, users.fullname, users.credits'))
 			->leftJoin('questions', 'questions.asker_id', '=', 'users.id')
@@ -26,6 +20,32 @@ class DashboardController extends \BaseController {
 			->first();
 		
 		return View::make('dashboard.index')->withUser( $user );
+	}
+
+	// Like index(), but for Expert
+	public function expertIndex()
+	{
+		// Get expert's expertise
+		$expert = Expert::where('user_id', '=', Auth::id())
+			->select('id', 'category_id')
+			->first();
+		;
+
+		$categories = Category::all();
+
+		// Get question that need his expertise
+		$questions = Question::where('category_id', '=', $expert->category_id)
+			->orWhere('specific_expert_id', '=', $expert->id)
+			->with('answers')
+			->with('category')
+			->get()
+		;
+		
+		return View::make('dashboard.expert.index')
+			->withUser( Auth::user() )
+			->with('categories', $categories)
+			->with('questions', $questions)
+		;
 	}
 
 

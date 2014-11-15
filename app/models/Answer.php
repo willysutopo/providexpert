@@ -1,7 +1,13 @@
 <?php
 
 class Answer extends Eloquent {
+	public function question()
+	{
+		return $this->belongsTo('Question');
+	}
 
-    protected $table = 'answers';
-
+	public function answeredBy()
+	{
+		return $this->belongsTo('Expert');
+	}
 }
