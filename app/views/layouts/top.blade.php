@@ -40,6 +40,17 @@
 						</li>
 					</ul>
 				</li>
+				<?php
+				if ( Entrust::hasRole('User') == true )
+				{
+					echo '
+					<li class="credits_part">
+					<span class="current_credit">
+					'.( Auth::user()->credits ).'</span> credits
+					</li>
+					';
+				}
+				?>
 				<!-- END USER LOGIN DROPDOWN -->
 				<!-- BEGIN QUICK SIDEBAR TOGGLER -->
 

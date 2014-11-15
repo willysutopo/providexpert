@@ -132,6 +132,26 @@
 }
 /* END OF ATTACH FILES BUTTON RELATED */
 
+/* TOP RELATED */
+.top-menu .credits_part
+{
+  padding-top:18px;
+  padding-left:10px;
+  font-weight:bold;  
+}
+
+.top-menu .credits_part .current_credit
+{  
+  border-radius:50% !important;
+  font-size:16px;
+  padding:5px 5px;
+  width:100%;
+  height:100%;
+  background-color:#ff0000;
+  color:#ffffff;  
+}
+/* END OF TOP RELATED */
+
 /* QUESTIONS LIST RELATED */
 .questions_list .answered
 {
