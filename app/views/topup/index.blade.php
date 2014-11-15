@@ -138,7 +138,7 @@
 				<div class="col-md-12 col-xs-12">
 					<div class="mt10">
 						<button class="btn green" type="button" id="btn_pay"><i class="fa fa-credit-card"></i> Pay via Credit Card</button>
-						<a href="/" class="btn default"><i class="fa fa-undo"></i> Cancel</a>
+						<a href="{{route("dashboard")}}" class="btn default"><i class="fa fa-undo"></i> Cancel</a>
 					</div>
 				</div>
 			</div>
@@ -219,7 +219,7 @@
 									<span class="input-group-addon">
 									<i class="fa fa-credit-card"></i>
 									</span>
-									<input name="cc_num" type="text" class="form-control" placeholder="Credit Card Number">
+									<input name="cc_num" type="text" class="form-control" placeholder="Credit Card Number" autocomplete="off">
 								</div>
 							</div>
 							<span class="help-block"><i class="text text-success">Our system not collect your confident information as CC Number for high security reason.</i></span>
