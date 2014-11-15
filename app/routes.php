@@ -77,7 +77,9 @@ Route::group(array('before' => 'roleUser'), function () {
 
 
 /* PROFILE RELATED */
-Route::resource('profile', 'ProfileController');
 Route::group(array('before' => 'roleUser'), function () {
-	Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'DashboardController@index'));
+	Route::get('profile', array('as' => 'profile.index', 'uses' => 'ProfileController@index'));
+	Route::get('profile/paypal', array('as' => 'profile.paypal', 'uses' => 'ProfileController@paypal'));
+	Route::post('profile/paypal/sync', array('as' => 'profile.paypal.sync', 'uses' => 'ProfileController@paypalSync'));
 });
+

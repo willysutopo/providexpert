@@ -29,7 +29,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="/profile">
+							<a href="{{route("profile.index")}}">
 							<i class="icon-user"></i> My Profile </a>
 						</li>
 						<li class="divider">
