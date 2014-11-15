@@ -104,3 +104,10 @@ Route::filter('roleExpert', function() {
 		return Redirect::guest($url); // User is not logged in, redirect him to login page
 	}
 });
+
+Route::filter('roleUserOrExpert', function() {
+	if (Entrust::hasRole('User') == false && Entrust::hasRole('Expert') == false) {
+		$url = route('login');
+		return Redirect::guest($url); // User is not logged in, redirect him to login page
+	}
+});

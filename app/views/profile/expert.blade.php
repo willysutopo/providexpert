@@ -103,11 +103,6 @@
 				</ul>				
 			</div>
 			<!-- END PAGE HEADER-->
-			<div class="row" style="margin-bottom: 30px">
-				<div class="col-sm-12 col-xs-12">
-					<a href="#" class="btn btn-success">Paypal Setting</a>
-				</div>
-			</div>
 
 			@if (Session::has('message'))
 				<div class="bg-success success_padder success_margin pt20 pb20 pl20 pr20 mb20">
@@ -116,53 +111,24 @@
 			@endif
 
 			<div class="row">
-				{{ Form::model($user, array(
-					'route' => 'profile.update.me',
+				{{ Form::open(array(
+					'route' => 'expert.profile.update.me',
 					'role' => 'form',
 					'class' => 'form-horizontal',
 					'method' => 'PUT',
 				)) }}
 
 				<div class="col-sm-6">
+					
 					<div class="form-group">
-						<label class="col-sm-4 control-label" for="fullname">Name</label>
+						<label class="col-sm-4 control-label" for="expert_name">Name</label>
 						<div class="col-sm-8">
-							{{ Form::text('fullname', null, array('class' => 'form-control')) }}
-							{{ $errors->first('fullname', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+							{{ Form::text('expert_name', Input::old('expert_name', $user->expert->expert_name), array('class' => 'form-control')) }}
+							{{ $errors->first('expert_name', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="email">Email</label>
-						<div class="col-sm-8">
-							{{ Form::input('email', 'email', null, array('class' => 'form-control')) }}
-							{{ $errors->first('email', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="address">Address</label>
-						<div class="col-sm-8">
-							{{ Form::textarea('address', null, array('class' => 'form-control', 'rows' => 3)) }}
-							{{ $errors->first('address', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="city">City</label>
-						<div class="col-sm-8">
-							{{ Form::text('city', null, array('class' => 'form-control')) }}
-							{{ $errors->first('city', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="phone">Phone</label>
-						<div class="col-sm-8">
-							{{ Form::input('tel', 'phone', null, array('class' => 'form-control')) }}
-							{{ $errors->first('phone', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
-						</div>
-					</div>
+					
 
 					<div class="row">
 						<div class="col-sm-offset-4 col-sm-8">
