@@ -141,33 +141,33 @@
 								<?php $i = 1; ?>
 								<table class="table table-striped table-hover">
 								@foreach( $questions as $question )
-								@if ( $question->category_alias == "health" )
-								<tr class="{{ ( ( $question->answer_count == 0 ) ? "health_unanswered" : "health_answered") }}">
-								<td class="text-right">
-									{{ $i }}.
-								</td>
-								<td>
-									{{ stripslashes($question->question) }}
-									<!-- information regarding this questions -->
-									<div class="mt10">
-										<?php
-										if ($question->answer_count == 0)
-										{
-											echo '<span class="unanswered">no answer yet</span>';
-										}
-										else
-										{
-											echo '
-											<span class="answered">answered by '.( $question->answer_count ).' experts</span>
-											| <a href="/answer/'.$question->id.'">view answers</a>
-											<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
-										}
-										?>
-									</div>
-								</td>
-								</tr>
-								<?php $i++; ?>
-								@endif
+									@if ( $question->category_alias == "health" )
+										<tr class="{{ ( ( $question->answer_count == 0 ) ? "health_unanswered" : "health_answered") }}">
+										<td class="text-right">
+											{{ $i }}.
+										</td>
+										<td>
+											{{ stripslashes($question->question) }}
+											<!-- information regarding this questions -->
+											<div class="mt10">
+												<?php
+												if ($question->answer_count == 0)
+												{
+													echo '<span class="unanswered">no answer yet</span>';
+												}
+												else
+												{
+													echo '
+													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+													| <a href="/answer/'.$question->id.'">view answers</a>
+													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+												}
+												?>
+											</div>
+										</td>
+										</tr>
+										<?php $i++; ?>
+									@endif									
 								@endforeach
 								</table>
 							</div>
@@ -199,33 +199,33 @@
 								<?php $i = 1; ?>
 								<table class="table table-striped table-hover">
 								@foreach( $questions as $question )
-								@if ( $question->category_alias == "property" )
-								<tr>
-								<td class="text-right">
-									{{ $i }}.
-								</td>
-								<td>
-									{{ stripslashes($question->question) }}
-									<!-- information regarding this questions -->
-									<div class="mt10">
-										<?php
-										if ($question->answer_count == 0)
-										{
-											echo '<span class="unanswered">no answer yet</span>';
-										}
-										else
-										{
-											echo '
-											<span class="answered">answered by '.( $question->answer_count ).' experts</span>
-											| <a href="/answer/'.$question->id.'">view answers</a>
-											<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
-										}
-										?>
-									</div>
-								</td>
-								</tr>
-								<?php $i++; ?>
-								@endif
+									@if ( $question->category_alias == "property" )
+										<tr>
+										<td class="text-right">
+											{{ $i }}.
+										</td>
+										<td>
+											{{ stripslashes($question->question) }}
+											<!-- information regarding this questions -->
+											<div class="mt10">
+												<?php
+												if ($question->answer_count == 0)
+												{
+													echo '<span class="unanswered">no answer yet</span>';
+												}
+												else
+												{
+													echo '
+													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+													| <a href="/answer/'.$question->id.'">view answers</a>
+													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+												}
+												?>
+											</div>
+										</td>
+										</tr>
+										<?php $i++; ?>
+									@endif									
 								@endforeach
 								</table>
 							</div>
@@ -258,33 +258,33 @@
 								<?php $i = 1; ?>
 								<table class="table table-striped table-hover">
 								@foreach( $questions as $question )
-								@if ( $question->category_alias == "food" )
-								<tr>
-								<td class="text-right">
-									{{ $i }}.
-								</td>
-								<td>
-									{{ stripslashes($question->question) }}
-									<!-- information regarding this questions -->
-									<div class="mt10">
-										<?php
-										if ($question->answer_count == 0)
-										{
-											echo '<span class="unanswered">no answer yet</span>';
-										}
-										else
-										{
-											echo '
-											<span class="answered">answered by '.( $question->answer_count ).' experts</span>
-											| <a href="/answer/'.$question->id.'">view answers</a>
-											<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
-										}
-										?>
-									</div>
-								</td>
-								</tr>
-								<?php $i++; ?>								
-								@endif
+									@if ( $question->category_alias == "food" )
+										<tr>
+										<td class="text-right">
+											{{ $i }}.
+										</td>
+										<td>
+											{{ stripslashes($question->question) }}
+											<!-- information regarding this questions -->
+											<div class="mt10">
+												<?php
+												if ($question->answer_count == 0)
+												{
+													echo '<span class="unanswered">no answer yet</span>';
+												}
+												else
+												{
+													echo '
+													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+													| <a href="/answer/'.$question->id.'">view answers</a>
+													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+												}
+												?>
+											</div>
+										</td>
+										</tr>
+										<?php $i++; ?>
+									@endif
 								@endforeach
 								</table>
 							</div>
@@ -317,33 +317,33 @@
 								<?php $i = 1; ?>
 								<table class="table table-striped table-hover">
 								@foreach( $questions as $question )
-								@if ( $question->category_alias == "love" )
-								<tr>
-								<td class="text-right">
-									{{ $i }}.
-								</td>
-								<td>
-									{{ stripslashes($question->question) }}
-									<!-- information regarding this questions -->
-									<div class="mt10">
-										<?php
-										if ($question->answer_count == 0)
-										{
-											echo '<span class="unanswered">no answer yet</span>';
-										}
-										else
-										{
-											echo '
-											<span class="answered">answered by '.( $question->answer_count ).' experts</span>
-											| <a href="/answer/'.$question->id.'">view answers</a>
-											<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
-										}
-										?>
-									</div>
-								</td>
-								</tr>
-								<?php $i++; ?>								
-								@endif
+									@if ( $question->category_alias == "love" )
+										<tr>
+										<td class="text-right">
+											{{ $i }}.
+										</td>
+										<td>
+											{{ stripslashes($question->question) }}
+											<!-- information regarding this questions -->
+											<div class="mt10">
+												<?php
+												if ($question->answer_count == 0)
+												{
+													echo '<span class="unanswered">no answer yet</span>';
+												}
+												else
+												{
+													echo '
+													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+													| <a href="/answer/'.$question->id.'">view answers</a>
+													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+												}
+												?>
+											</div>
+										</td>
+										</tr>
+										<?php $i++; ?>
+									@endif
 								@endforeach
 								</table>
 							</div>
@@ -376,33 +376,33 @@
 								<?php $i = 1; ?>
 								<table class="table table-striped table-hover">
 								@foreach( $questions as $question )
-								@if ( $question->category_alias == "education" )
-								<tr>
-								<td class="text-right">
-									{{ $i }}.
-								</td>
-								<td>
-									{{ stripslashes($question->question) }}
-									<!-- information regarding this questions -->
-									<div class="mt10">
-										<?php
-										if ($question->answer_count == 0)
-										{
-											echo '<span class="unanswered">no answer yet</span>';
-										}
-										else
-										{
-											echo '
-											<span class="answered">answered by '.( $question->answer_count ).' experts</span>
-											| <a href="/answer/'.$question->id.'">view answers</a>
-											<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
-										}
-										?>
-									</div>
-								</td>
-								</tr>
-								<?php $i++; ?>								
-								@endif
+									@if ( $question->category_alias == "education" )
+										<tr>
+										<td class="text-right">
+											{{ $i }}.
+										</td>
+										<td>
+											{{ stripslashes($question->question) }}
+											<!-- information regarding this questions -->
+											<div class="mt10">
+												<?php
+												if ($question->answer_count == 0)
+												{
+													echo '<span class="unanswered">no answer yet</span>';
+												}
+												else
+												{
+													echo '
+													<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+													| <a href="/answer/'.$question->id.'">view answers</a>
+													<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+												}
+												?>
+											</div>
+										</td>
+										</tr>
+										<?php $i++; ?>
+									@endif
 								@endforeach
 								</table>
 							</div>

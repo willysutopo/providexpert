@@ -181,8 +181,17 @@ class AskController extends \BaseController {
 		{			
 			return Redirect::to("/login");
 		}
+
+		$question = Question::where('id', $id)->first();
+		$answers = DB::table('answers')
+			->select(DB::raw('answers.answer, experts.expert_name, experts.updated_at'))
+			->join('experts', 'experts.id', '=', 'answers.expert_id')
+			->where('answers.question_id', $id)
+			->where('answers.published', 1)
+			->orderBy('updated_at', 'desc')
+			->get();		
 		
-		return View::make('ask.answer');
+		return View::make('ask.answer')->withQuestion( $question )->withAnswers( $answers );
 	}
 
 }

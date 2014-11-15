@@ -115,7 +115,7 @@
 						<div class="question">
 							<b>Question :</b>
 							<div class="mt5">
-								Saya mengalami keluhan. Terkadang, di bagian bawah sebelah kiri dada terasa sakit. Serasa bagian dalam anggota tubuh sedang diremas. Saya memang sering makan enak tanpa memikirkan efek samping dari makan enak tersebut. Apakah ada hubungannya makan enak dengan sakit yang saya alami tersebut? Sebelumnya, terima kasih untuk menjawab pertanyaan saya ini.
+								{{ stripslashes( $question->question ) }}				
 							</div>
 						</div>
 					</div>					
@@ -130,32 +130,23 @@
 					</div>
 
 					<table class="table table-striped table-hover">
-					<tr>
-					<td class="text-right">
-						1.
-					</td>
-					<td>
-						Mungkin anda harus sering berolahraga dan jangan makan terlalu banyak makanan yang berminyak, seperti goreng-gorengan, ataupun makanan yang dibakar. Lalu, usahakan jangan terlalu stres. Banyak istirahat, tidur yang cukup. Sebenarnya obat yang mujarab adalah banyak istirahat.
-						<!-- information regarding this answer -->
-						<div class="mt10">
-							<span class="answered">answered by Dr. Boyke</span>							
-							<span class="info"> | answered on : 10 November 2014</span>
-						</div>
-					</td>
-					</tr>
-					<tr>
-					<td class="text-right">
-						2.
-					</td>
-					<td>
-						Saya setuju dengan jawaban dari Dr. Boyke yang sangat sederhana. Memang sederhana. Makan makanan yang sehat, banyak berserat dan tidur yang cukup. Jangan stres. Lihatlah segala sesuatu yang terjadi dari sisi positifnya. Jangan selalu berpikiran negatif. Sekian jawaban dari saya
-						<!-- information regarding this answer -->
-						<div class="mt10">
-							<span class="answered">answered by Dr. Bondan</span>
-							<span class="info"> | answered on : 10 November 2014</span>
-						</div>
-					</td>
-					</tr>
+					<?php $i = 1; ?>
+					@foreach ( $answers as $answer )
+						<tr>
+						<td class="text-right">
+							{{ $i }}.
+						</td>
+						<td>
+							{{ stripslashes( $answer->answer ) }}
+							<!-- information regarding this answer -->
+							<div class="mt10">
+								<span class="answered">answered by {{ $answer->expert_name }}</span>
+								<span class="info"> | answered on : {{ date("n F Y", strtotime( $answer->updated_at )) }}</span>
+							</div>
+						</td>
+						</tr>
+						<?php $i++; ?>
+					@endforeach					
 					</table>
 				</div>
 			</div>									
