@@ -65,6 +65,7 @@ Route::group(array('before' => 'roleUser'), function () {
 Route::group(array('before' => 'roleExpert'), function () {
 	Route::get('reply/{id}', array('as' => 'ask.reply', 'uses' => 'AskController@reply_question'));
 	Route::post('ask/doreply', array('as' => 'ask.doreply', 'uses' => 'AskController@doReply'));
+	Route::get('answer/{id}', array('as' => 'ask.answer', 'uses' => 'AskController@show_answer'));
 });
 /* END OF QUESTIONS RELATED */
 

@@ -29,11 +29,11 @@ class DashboardController extends \BaseController {
 		$expert = Expert::where('user_id', '=', Auth::id())
 			->select('id', 'category_id')
 			->first();
-		;
+		;		
 
 		// Get question that need his expertise
 		$questions = DB::table('questions')
-			->select(DB::raw('count(answers.id) as answer_count, questions.id, questions.question, questions.category_id, categories.category_name, answers.updated_at as answer_updated_at'))
+			->select(DB::raw('count(answers.id) as answer_count, questions.id, questions.question, questions.category_id, categories.category_name, max(answers.updated_at) as answer_updated_at'))
 			->join('categories', 'categories.id', '=', 'questions.category_id')
 			->leftJoin('answers', 'answers.question_id', '=', 'questions.id')			
 			->where('questions.published', 1)
@@ -49,7 +49,7 @@ class DashboardController extends \BaseController {
 			->groupBy('questions.category_id')
 			->groupBy('categories.category_alias')
 			->groupBy('categories.category_name')
-			->groupBy('answers.updated_at')
+			//->groupBy('answers.updated_at')
 			->get();
 		
 		return View::make('dashboard.expert.index')

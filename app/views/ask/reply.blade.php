@@ -55,7 +55,7 @@
 		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<!-- BEGIN SIDEBAR MENU -->
-			@include('layouts.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))
+			@include('layouts.expert.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))			
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
