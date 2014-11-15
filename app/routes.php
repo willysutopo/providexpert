@@ -77,7 +77,12 @@ Route::group(array('before' => 'roleUser'), function () {
 
 
 /* PROFILE RELATED */
-Route::resource('profile', 'ProfileController');
+Route::group(array('before' => 'roleUserOrExpert'), function () {
+	Route::get('profile', array('as' => 'profile.index', 'uses' => 'ProfileController@index'));
+});
 Route::group(array('before' => 'roleUser'), function () {
-	Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'DashboardController@index'));
+	Route::put('profile/me', array('as' => 'profile.update.me', 'uses' => 'ProfileController@userUpdateMe'));
+});
+Route::group(array('before' => 'roleExpert'), function () {
+	Route::put('expert/profile/me', array('as' => 'expert.profile.update.me', 'uses' => 'ProfileController@expertUpdateMe'));
 });

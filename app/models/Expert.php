@@ -17,4 +17,9 @@ class Expert extends Eloquent {
 		// List of answers given by this expert
 		return $this->hasMany('Answer');
 	}
+
+	public function user()
+	{
+		return $this->belongsTo('User');
+	}
 }

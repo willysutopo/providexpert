@@ -15,88 +15,59 @@ class ProfileController extends \BaseController {
 
 	public function index()
 	{
-		if ( !Auth::check() )
-		{
-			return View::make('login.show');
-		}
-		else
-		{
+		
+		if (Entrust::hasRole('Expert')) {
+			$user = Auth::user()->with('expert')->first();
+
+			// dpd($user->toArray());
+
+			$categories = Category::all();
+
+			return View::make('profile.expert')
+				->with('user', $user)
+				->with('categories', $categories)
+			;
+		} else {
 			$user = Auth::user();
-			if (Entrust::hasRole('Expert')) {
-				return View::make('profile.expert')->withUser( $user );
-			} else {
-				return View::make('profile.user')->withUser( $user );
-			}
+			return View::make('profile.user')
+				->with('user', $user)
+			;
 		}		
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function userUpdateMe()
 	{
-		//
+		$input = Input::except('q', '_method', '_token');
+
+		$validator = Validator::make($input, array(
+			'fullname' => 'required',
+			'email' => 'required|email',
+			'address' => 'required',
+			'city' => 'required',
+			'phone' => 'required',
+		));
+		$validator->setAttributeNames(array(
+			'fullname' => 'name'
+		));
+
+		if ($validator->fails()) {
+			return Redirect::back()
+				->withErrors($validator)
+				->withInput()
+			;
+		} else {
+			$user = Auth::user();
+			$user->fill($input);
+			$user->save();
+			return Redirect::route('profile.index')
+				->withMessage('Profile updated')
+			;
+		}
 	}
 
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+	public function expertUpdateMe()
 	{
-		//
-	}
 
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 	// do register new account
