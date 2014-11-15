@@ -247,14 +247,17 @@ class LoginController extends \BaseController {
 		$user->address = $address;
 		$user->city = $city;
 		$user->country = $country;
-		$user->phone = $phone;
-		$user->role = 'member';		
+		$user->phone = $phone;	
 		$user->status = 'A';		
 		$user->photo = '';
 		$user->timezone = '';
 		$user->credits = 50; // 50 free initial credits
 		$user->last_login = date("Y-m-d H:i:s");		
 		$user->save();
+
+		// Set new registered user role as "User"
+		$role = Role::where('name', '=', 'User')->first();
+		$user->attachRole($role);
 
 		return Redirect::to('login')->withMessage('You have registered successfully. Please login using your email and password');
 	}

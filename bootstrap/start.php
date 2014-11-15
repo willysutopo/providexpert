@@ -63,6 +63,30 @@ $framework = $app['path.base'].
 
 require $framework.'/Illuminate/Foundation/start.php';
 
+
+function dpd()
+{
+	array_map(function($x)
+		{
+			echo '<pre>';
+			var_dump($x);
+			echo '</pre>';
+		}, 
+	func_get_args());
+	die;
+}
+
+function dp()
+{
+	array_map(function($x)
+		{
+			echo '<pre>';
+			var_dump($x);
+			echo '</pre>';
+		}, 
+	func_get_args());
+}
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

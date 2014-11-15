@@ -38,7 +38,7 @@ Route::get('/login', function()
 */
 
 /* DASHBOARD RELATED */
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'DashboardController@index'));
 Route::resource('dashboard', 'DashboardController');
 /* END OF DASHBOARD RELATED */
 

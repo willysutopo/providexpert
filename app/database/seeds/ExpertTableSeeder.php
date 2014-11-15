@@ -11,11 +11,11 @@ class ExpertTableSeeder extends Seeder {
 				'expert_name'				=> 'Dr. Sidhartawan Sugondho',
 				'category_id'				=> 50,
 				'expertises'				=> 'Diabetes',
-				'password'					=> Hash::make('123456'),
 				'phone'							=> '',
 				'address'						=> '',
 				'pic_link'					=> '',
-				'published'					=> 1
+				'published'					=> 1,
+				'user_id' => 3000
 			));
 
 			Expert::create(array(
@@ -23,11 +23,11 @@ class ExpertTableSeeder extends Seeder {
 				'expert_name'				=> 'Dr. Tjien Ronny',
 				'category_id'				=> 50,
 				'expertises'				=> 'Maternity, Pregnancy',
-				'password'					=> Hash::make('123456'),
 				'phone'							=> '',
 				'address'						=> '',
 				'pic_link'					=> '',
-				'published'					=> 1
+				'published'					=> 1,
+				'user_id' => 3001
 			));
 
 			Expert::create(array(
@@ -35,11 +35,11 @@ class ExpertTableSeeder extends Seeder {
 				'expert_name'				=> 'Dr. Andri Tangkilisan',
 				'category_id'				=> 50,
 				'expertises'				=> 'Child',
-				'password'					=> Hash::make('123456'),
 				'phone'							=> '',
 				'address'						=> '',
 				'pic_link'					=> '',
-				'published'					=> 1
+				'published'					=> 1,
+				'user_id' => 3002
 			));
     }
 
