@@ -49,7 +49,8 @@ Route::group(array('before' => 'roleExpert'), function () {
 
 /* TOPUP RELATED */
 Route::group(array('before' => 'roleUser'), function () {
-	Route::get('/topup', 'TopupController@index');
+	Route::get('/topup', array('as' => 'topup.index', 'uses' => 'TopupController@index'));
+	Route::post('/sale', array('as' => 'topup.sale', 'uses' => 'TopupController@sale'));
 });
 /* END OF TOPUP RELATED */
 
