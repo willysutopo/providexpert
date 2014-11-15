@@ -17,7 +17,10 @@ class ProfileController extends \BaseController {
 	{
 		
 		if (Entrust::hasRole('Expert')) {
-			$user = Auth::user()->with('expert')->first();
+
+			$user = Auth::user()->with('expert')->where('id', Auth::user()->id)->first();
+
+			//$user = Auth::user()->with('expert')->first();
 
 			$categories = Category::all(array('id', 'category_name'));
 			$categoryList = [];
@@ -170,7 +173,8 @@ class ProfileController extends \BaseController {
 				->withInput()
 			;
 		} else {
-			$user = Auth::user()->with('expert')->first();
+			$user = Auth::user()->with('expert')->where('id', Auth::user()->id)->first();
+			//$user = Auth::user()->with('expert')->first();
 			$user->fill(array(
 				'email' => $input['email'],
 				'address' => $input['address'],
