@@ -55,7 +55,7 @@
 		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<!-- BEGIN SIDEBAR MENU -->
-			@include('layouts.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))
+			@include('layouts.expert.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
@@ -131,7 +131,7 @@
 					<div class="form-group">
 						<label class="col-sm-4 control-label" for="email">Email</label>
 						<div class="col-sm-8">
-							{{ Form::input('email', 'email', Input::old('email', $user->email), array('class' => 'form-control')) }}
+							{{ Form::input('email', 'email', Input::old('email', $user->email), array('class' => 'form-control', 'readonly' => '')) }}
 							{{ $errors->first('email', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
 						</div>
 					</div>

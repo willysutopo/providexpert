@@ -55,7 +55,7 @@
 		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<!-- BEGIN SIDEBAR MENU -->
-			@include('layouts.expert.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))			
+			@include('layouts.expert.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))	
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
@@ -95,6 +95,11 @@
 					<li>
 						<i class="fa fa-home"></i>
 						<a href="/">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<i class="fa fa-question-circle"></i>
+						<a href="/questions">Questions List</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>

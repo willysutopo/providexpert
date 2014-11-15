@@ -32,11 +32,12 @@
 	</li>
 	<li class="{{ ( ( $menu_active == 'dashboard' ) ? 'active open' : '' ) }}">
 		<a href="{{ route('expert.dashboard') }}">
-		<i class="fa fa-home"></i>
-		<span class="title">Dashboard</span>
+		<i class="fa fa-question-circle"></i>
+		<span class="title">Questions From Users</span>
 		</a>
 	</li>
 	
+	<!--
 	<li class="{{ ( ( $menu_active == 'expert' ) ? 'active open' : '' ) }}">
 		<a href="javascript:">
 		<i class="fa fa-group"></i>
@@ -61,4 +62,5 @@
 			</li>
 		</ul>
 	</li>
+	-->
 </ul>

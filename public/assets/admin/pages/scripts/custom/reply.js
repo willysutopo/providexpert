@@ -1,6 +1,4 @@
-var ReplyQuestion = function () {
-
-    alert("TEST");    
+var ReplyQuestion = function () {    
     /*
     tinymce.init({
         selector: "textarea",

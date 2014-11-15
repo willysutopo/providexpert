@@ -184,7 +184,7 @@
 					<div class="form-group">
 						<label class="col-sm-4 control-label" for="email">Email</label>
 						<div class="col-sm-8">
-							{{ Form::input('email', 'email', null, array('class' => 'form-control')) }}
+							{{ Form::input('email', 'email', null, array('class' => 'form-control', 'readonly' => '')) }}
 							{{ $errors->first('email', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
 						</div>
 					</div>
