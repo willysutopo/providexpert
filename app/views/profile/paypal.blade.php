@@ -128,7 +128,7 @@
 											<span class="input-group-addon">
 											<i class="fa fa-credit-card"></i>
 											</span>
-											<input name="cc_num" type="text" class="form-control" placeholder="Credit Card Number">
+											<input name="cc_num" type="text" class="form-control" placeholder="Credit Card Number" autocomplete="off">
 										</div>
 									</div>
 									<span class="help-block"><i class="text text-success">Our system not collect your confident information as CC Number for high security reason.</i></span>
