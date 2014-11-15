@@ -86,7 +86,7 @@ class AskController extends \BaseController {
 		$categories = Category::all();
 
 		$questions = DB::table('questions')
-			->select(DB::raw('count(answers.id) as answer_count, questions.id, questions.question, questions.category_id, categories.category_alias, categories.category_name, answers.updated_at as answer_updated_at'))
+			->select(DB::raw('count(answers.id) as answer_count, questions.id, questions.question, questions.category_id, categories.category_alias, categories.category_name, max(answers.updated_at) as answer_updated_at'))
 			->join('categories', 'categories.id', '=', 'questions.category_id')
 			->leftJoin('answers', 'answers.question_id', '=', 'questions.id')
 			->where('questions.published', 1)
@@ -97,7 +97,7 @@ class AskController extends \BaseController {
 			->groupBy('questions.category_id')
 			->groupBy('categories.category_alias')
 			->groupBy('categories.category_name')
-			->groupBy('answers.updated_at')
+			//->groupBy('answers.updated_at')
 			->get();		
 
 		return View::make('ask.list')->withQuestions($questions)->withCategories($categories);
