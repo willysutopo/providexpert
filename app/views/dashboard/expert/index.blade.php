@@ -147,7 +147,8 @@
 								echo '
 								<span class="answered">answered already</span>
 								| <a href="/answer/'.$question->id.'">view answers</a>
-								<span class="info"> | last answered : '.( date("j F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+								<span class="info"> | last answered : '.( date("j F Y", strtotime( $question->answer_updated_at)) ).'</span>
+								| <a href="/reply/'.$question->id.'">give another answer</a>';
 							}
 							?>
 						</div>

@@ -33,6 +33,19 @@ class AskController extends \BaseController {
 			return Redirect::route('ask.question',[$category])->withErrors($validator)->withInput();
 		}
 
+		// check credits first
+		$user = User::where('id', Auth::user()->id)->first();
+		$credits = $user->credits;
+
+		if ( $credits < 2 )
+		{
+			return Redirect::route('ask.question',[$category])->withErrormsg('You do not have sufficient credits. Please top up first before you can post any question.');
+		}
+
+		// deduct credits
+		$user->credits = $credits - 2;
+		$user->update();
+
 		$question = addslashes(Input::get('question'));
 		$category_id = Input::get('category_id');
 		$asker_id = Auth::user()->id;
@@ -121,22 +134,39 @@ class AskController extends \BaseController {
 		// have to get the asker of the question so that we can send email to the asker that
 		// his question has already been replied
 		$question = DB::table('questions')
-			->select('users.email, users.fullname')
+			->select(DB::raw('users.email, users.fullname, questions.question'))			
 			->join('users', 'users.id', '=', 'questions.asker_id')
 			->where('questions.id', $question_id)
 			->first();
 
 		$to_email = $question->email;
 		$to_name = $question->fullname;
+		$user_question = $question->question;
 		$subject = "An expert has replied to your query";
+		// the content
+		$ses_content = '
+		Dear '.$to_name.',
+		<br />
+		<br />
+		An expert has replied to your query :
+		'.nl2br($user_question).'
+		<br /><br />
+		Please open this link to view the answer :
+		<a href="http://providexpert/answer/'.$question_id.'" target="_blank">
+		http://providexpert/answer/'.$question_id.'</a>
+		<br /><br />
+		Best Regards,
+		<br />
+		Providexpert Team
+		';
 		$data_mail = array('content' => $ses_content);
 
 		// begin sending email
-		Mail::send('emails.test', $data_mail, function($message) use ($to_name, $to_email, $subject )
+		Mail::send('emails.layout', $data_mail, function($message) use ($to_name, $to_email, $subject )
 		{			
 			$message->to($to_email, $to_name);
 			$message->subject($subject);
-		});
+		});		
 
 		// END OF EMAIL SECTION
 		// ------------------------------------------

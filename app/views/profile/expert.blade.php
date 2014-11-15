@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Ask {{ $category->category_name }} Question | Providexpert</title>
+<title>My Profile | Providexpert</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -41,7 +41,7 @@
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="ask_question page-header-fixed page-quick-sidebar-over-content ">
+<body class="dashboard page-header-fixed page-quick-sidebar-over-content ">
 <!-- BEGIN HEADER -->
 @include('layouts.top')
 <!-- END HEADER -->
@@ -55,7 +55,7 @@
 		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<div class="page-sidebar navbar-collapse collapse">
 			<!-- BEGIN SIDEBAR MENU -->
-			@include('layouts.side', array('menu_active' => 'question', 'sub_menu_active' => 'ask'))
+			@include('layouts.side', array('menu_active' => 'dashboard', 'sub_menu_active' => ''))
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
@@ -87,8 +87,8 @@
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 			
 			<!-- BEGIN PAGE HEADER-->
-			<h3 class="page-title page-title-img">
-			<img src="/img/categories/{{ $category->pic_link }}" alt="" border="0" /> {{ $category->category_name }} Question
+			<h3 class="page-title">
+			My Profile
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -96,56 +96,95 @@
 						<i class="fa fa-home"></i>
 						<a href="/">Home</a>
 						<i class="fa fa-angle-right"></i>
-					</li>
+					</li>					
 					<li>
-						<i class="fa fa-question-circle"></i>
-						<a href="/ask">Choose Category</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						{{ $category->category_name }} Question
+						My Profile
 					</li>
 				</ul>				
 			</div>
-
-			@if (Session::has('errormsg'))
-				<div class="bg-danger success_padder success_margin pt20 pb20 pl20 pr20 mb20">
-					{{{ Session::get('errormsg') }}}
-				</div>
-			@endif
+			<!-- END PAGE HEADER-->
 
 			@if (Session::has('message'))
 				<div class="bg-success success_padder success_margin pt20 pb20 pl20 pr20 mb20">
-					{{{ Session::get('message') }}}. Please go to <a href="/questions">Question List</a> to view your questions
+					{{{ Session::get('message') }}}
 				</div>
 			@endif
 
-			<!-- END PAGE HEADER-->
-			{{ Form::open(array('route' => 'ask.store', 'class'=>'form-horizontal', 'role'=>'form', 'id' => 'form_ask_question')) }}
 			<div class="row">
-				<div class="col-md-8 col-xs-12">
-					<input type="hidden" name="category_id" value="{{ $category->id }}" />
-					<input type="hidden" name="category" value="{{ $category->category_alias }}" />
-					<label>Your Question</label>
-					{{ Form::textarea('question', '', array('rows' => 8, 'id' => 'question', 'class' => 'form-control ')) }}
-					{{ $errors->first('question', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+				{{ Form::open(array(
+					'route' => 'expert.profile.update.me',
+					'role' => 'form',
+					'class' => 'form-horizontal',
+					'method' => 'PUT',
+				)) }}
+
+				<div class="col-sm-6">
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="expert_name">Name</label>
+						<div class="col-sm-8">
+							{{ Form::text('expert_name', Input::old('expert_name', $user->expert->expert_name), array('class' => 'form-control')) }}
+							{{ $errors->first('expert_name', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="email">Email</label>
+						<div class="col-sm-8">
+							{{ Form::input('email', 'email', Input::old('email', $user->email), array('class' => 'form-control')) }}
+							{{ $errors->first('email', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="category_id">Category</label>
+						<div class="col-sm-8">
+							{{ Form::select(
+							'category_id',
+							['' => '-- Please select --'] + $categoryList,
+							Input::old('category_id', $user->expert->category_id), 
+							array('class' => 'form-control required')
+						) }}
+							{{ $errors->first('category_id', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="expertises">Expertises</label>
+						<div class="col-sm-8">
+							{{ Form::text('expertises', Input::old('expertises', $user->expert->expertises), array('class' => 'form-control')) }}
+							{{ $errors->first('expertises', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="address">Address</label>
+						<div class="col-sm-8">
+							{{ Form::textarea('address', Input::old('address', $user->address), array('class' => 'form-control', 'rows' => 3)) }}
+							{{ $errors->first('address', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="phone">Phone</label>
+						<div class="col-sm-8">
+							{{ Form::input('tel', 'phone', Input::old('phone', $user->phone), array('class' => 'form-control')) }}
+							{{ $errors->first('phone', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
+						</div>
+					</div>					
+
+					<div class="row">
+						<div class="col-sm-offset-4 col-sm-8">
+							{{ Form::submit('Save Changes', array('class' => 'btn blue-madison')) }}
+						</div>
+					</div>
+					
 				</div>
+				
+
+				{{ Form::close() }}
 			</div>
-			<div class="mt20"></div>
-			<div class="row">
-				<div class="col-md-6 col-xs-12">
-					<label>Specific To</label>
-					{{ Form::select('expert_id', $experts, '', array('class' => 'form-control', 'id' => 'expert_id') ) }}
-				</div>
-			</div>
-			<div class="mt20"></div>
-			<div class="row">
-				<div class="col-md-4 col-xs-12">
-					<button class="btn green submit_question_btn" type="button"><i class="fa fa-save"></i> Submit</button>
-					<a href="/ask" class="btn default"><i class="fa fa-undo"></i> Cancel</a>
-				</div>
-			</div>
-			{{ Form::close() }}
+			
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>
@@ -185,7 +224,7 @@
 <script src="{{ asset('assets/admin/layout/scripts/layout.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/admin/layout/scripts/quick-sidebar.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/admin/layout/scripts/demo.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/admin/pages/scripts/custom/ask.js') }}"></script>
+<script src="{{ asset('assets/admin/pages/scripts/custom/dashboard-managed.js') }}"></script>
 <script src="{{ asset('assets/admin/pages/scripts/custom/providexpert.js') }}"></script>
 <script>
 jQuery(document).ready(function() {       
@@ -194,7 +233,7 @@ jQuery(document).ready(function() {
 	Layout.init(); // init current layout
 	QuickSidebar.init(); // init quick sidebar
 	Demo.init(); // init demo features
-	AskQuestion.init();
+	DashboardManaged.init();
 });
 </script>
 </body>
