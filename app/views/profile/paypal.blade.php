@@ -118,6 +118,7 @@
    <div class="alert alert-danger">{{ Session::get('fail') }}<button type="button" class="close" data-close="alert"></button></div>
 @endif
 					<form action="{{ route('profile.paypal.sync') }}" class="form-horizontal" method="post">
+						{{Form::token()}}
 						<div class="form-body">
 							<div class="form-group">
 								<label class="col-md-3 control-label">Credit Card</label>
