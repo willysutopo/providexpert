@@ -106,26 +106,14 @@
 
 			<div class="tabbable-line">
 				<ul class="nav nav-tabs ">
-					<li class="active">
-						<a href="#health_tab_content" data-toggle="tab">
-						Health </a>
-					</li>
-					<li>
-						<a href="#property_tab_content" data-toggle="tab">
-						Property </a>
-					</li>
-					<li>
-						<a href="#food_tab_content" data-toggle="tab">
-						Food </a>
-					</li>
-					<li>
-						<a href="#love_tab_content" data-toggle="tab">
-						Love </a>
-					</li>
-					<li>
-						<a href="#education_tab_content" data-toggle="tab">
-						Education </a>
-					</li>
+					<?php $j = 0; ?>
+					@foreach ( $categories as $category )
+						<li class="{{ ( ( $j == 0 ) ? "active" : "" ) }}">
+						<a href="#{{ $category->category_alias }}_tab_content" data-toggle="tab">
+							{{ $category->category_name }} </a>
+						</li>
+					<?php $j++; ?>
+					@endforeach					
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane fade active in" id="health_tab_content">
@@ -140,9 +128,9 @@
 										<label class="col-md-3 control-label mt5 pr0">Filter</label>
 										<div class="col-md-9 pr0">
 											<select class="form-control">
-												<option>All Status</option>
-												<option>Unanswered</option>
-												<option>Answered</option>
+												<option value="all">All Status</option>
+												<option value="0">Unanswered</option>
+												<option value="1">Answered</option>
 											</select>
 										</div>
 									</div>

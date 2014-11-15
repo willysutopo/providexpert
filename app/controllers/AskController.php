@@ -148,8 +148,11 @@ class AskController extends \BaseController {
 			return Redirect::to("/login");
 		}
 
+		$categories = Category::all();
+
 		$questions = DB::table('questions')
-			->select(DB::raw('count(answers.id) as answer_count, questions.id, questions.question, questions.category_id, answers.updated_at as answer_updated_at'))
+			->select(DB::raw('count(answers.id) as answer_count, questions.id, questions.question, questions.category_id, categories.category_alias, categories.category_name, answers.updated_at as answer_updated_at'))
+			->join('categories', 'categories.id', '=', 'questions.category_id')
 			->leftJoin('answers', 'answers.question_id', '=', 'questions.id')
 			->where('questions.published', 1)
 			->where('questions.asker_id', Auth::user()->id)			
@@ -157,6 +160,8 @@ class AskController extends \BaseController {
 			->groupBy('questions.id')
 			->groupBy('questions.question')
 			->groupBy('questions.category_id')
+			->groupBy('categories.category_alias')
+			->groupBy('categories.category_name')
 			->groupBy('answers.updated_at')
 			->get();
 
@@ -165,7 +170,7 @@ class AskController extends \BaseController {
 		exit;
 		*/
 
-		return View::make('ask.list')->withQuestions($questions);
+		return View::make('ask.list')->withQuestions($questions)->withCategories($categories);
 	}
 
 	// function to show answer of a question ( in the form of ID )
