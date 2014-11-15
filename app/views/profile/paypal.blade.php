@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Paypal Setting | Providexpert</title>
+<title>Credit Card Setting | Providexpert</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -88,7 +88,7 @@
 			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Paypal Setting
+			Credit Card Setting
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -104,7 +104,7 @@
 					</li>
 					<li>
 						<i class="fa fa-credit-card"></i>
-						Paypal Setting
+						Credit Card Setting
 					</li>
 				</ul>				
 			</div>

@@ -109,7 +109,7 @@
 					<div class="portlet box blue">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-credit-card"></i>Paypal Info
+								<i class="fa fa-credit-card"></i>Credit Card Info
 							</div>
 							<div class="actions">
 								<a href="{{route("profile.paypal")}}" class="btn btn-success">Edit</a>
@@ -153,7 +153,7 @@
 						</div>
 					</div>	
 					@else
-						<a href="{{route("profile.paypal")}}" class="btn btn-success">Paypal Setting</a>
+						<a href="{{route("profile.paypal")}}" class="btn btn-success">Credit Card Setting</a>
 					@endif
 				</div>
 			</div>
