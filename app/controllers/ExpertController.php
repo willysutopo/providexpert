@@ -20,6 +20,11 @@ class ExpertController extends \BaseController {
 		$arr_category = Category::where('category_alias', $category)->first();
 		$category_id = $arr_category->id;
 		$arr_experts = Expert::where('category_id', $category_id)->get();
+		$arr_experts = DB::table('experts')			
+			->join('users', 'users.id', '=', 'experts.user_id')
+			->where('category_id', $category_id)
+			->select(DB::raw('experts.expert_name, experts.expertises, users.photo as pic_link'))			
+			->get();
 
 		return View::make('experts.list')->withCategory($arr_category)->withExperts($arr_experts);
 	}
