@@ -127,3 +127,41 @@ var AskManaged = function () {
     };
 
 }();
+
+var AskExpertManaged = function () {
+
+    $('select[name=question_filter]').change(function()
+    {
+        var filter = $('select[name=question_filter]').val();
+
+        if ( filter == "all" )
+        {
+            $(".question_answered").show();
+            $(".question_unanswered").show();
+        }
+        else
+        if ( filter == "0" )
+        {
+            $(".question_answered").hide();
+            $(".question_unanswered").show();
+        }
+        else
+        if ( filter == "1" )
+        {
+            $(".question_answered").show();
+            $(".question_unanswered").hide();
+        }
+    });
+
+    return {
+
+        //main function to initiate the module
+        init: function () {
+            if (!jQuery().dataTable) {
+                return;
+            }
+        }
+
+    };
+
+}();

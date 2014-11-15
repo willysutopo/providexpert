@@ -113,7 +113,7 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label mt5 pr0">Filter</label>
 							<div class="col-md-9 pr0">
-								<select class="form-control" name="health_filter">
+								<select class="form-control" name="question_filter">
 									<option value="all">All Status</option>
 									<option value="0">Unanswered</option>
 									<option value="1">Answered</option>
@@ -128,7 +128,7 @@
 					<table class="table table-striped table-hover">
 					@foreach( $questions as $question )
 					
-					<tr class="{{ ( ( $question->answer_count == 0 ) ? "health_unanswered" : "health_answered") }}">
+					<tr class="{{ ( ( $question->answer_count == 0 ) ? "question_unanswered" : "question_answered") }}">
 					<td class="text-right">
 						{{ $i }}.
 					</td>
@@ -139,7 +139,8 @@
 							<?php
 							if ($question->answer_count == 0)
 							{
-								echo '<span class="unanswered">no answer yet</span>';
+								echo '<span class="unanswered">no answer yet</span>
+								| <a href="/reply/'.$question->id.'">give answers</a>';
 							}
 							else
 							{
@@ -206,7 +207,7 @@ jQuery(document).ready(function() {
 	Layout.init(); // init current layout
 	QuickSidebar.init(); // init quick sidebar
 	Demo.init(); // init demo features
-	AskManaged.init();
+	AskExpertManaged.init();
 });
 </script>
 </body>

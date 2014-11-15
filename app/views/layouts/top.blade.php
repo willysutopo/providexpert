@@ -24,7 +24,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<img alt="" class="img-circle hide1" src="{{ asset('assets/admin/layout/img/avatar3_small.jpg') }}"/>
 					<span class="username username-hide-on-mobile">
-					<!-- gonna change here --> Willy </span>
+					<!-- gonna change here --> {{ Auth::user()->fullname }} </span>
 					<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu">
