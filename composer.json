@@ -11,7 +11,7 @@
 		"aws/aws-sdk-php": "2.*",
 		"pda/pheanstalk": "~2.0",
 		"zizaco/confide": "~4.0@dev",
-		"paypal/rest-api-sdk-php" : "0.5.*"
+		"braintree/braintree_php" : "2.33.0"
 	},
 	"autoload": {
 		"classmap": [
@@ -21,7 +21,12 @@
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php"
+		],
+		"files":[
+			"vendor/braintree/braintree_php/lib/Braintree.php",
+			"app/lib/BraintreeManager.php"
 		]
+		
 	},
 	"scripts": {
 		"post-install-cmd": [
