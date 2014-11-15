@@ -8,8 +8,11 @@ View::composer('layouts.top', function($view)
 	} else {
 		$currentUserName = Auth::user()->fullname;	
 	}
+
+	$currentPhoto = Auth::user()->photo;
 	
 	$view
 		->with('currentUserName', $currentUserName)
+		->with('currentPhoto', $currentPhoto)
 	;
 });

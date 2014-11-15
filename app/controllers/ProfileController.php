@@ -23,8 +23,7 @@ class ProfileController extends \BaseController {
 			$categoryList = [];
 			foreach ($categories as $category) {
 				$categoryList[$category->id] = $category->category_name;
-			}
-
+			}			
 
 			return View::make('profile.expert')
 				->with('user', $user)
@@ -53,6 +52,41 @@ class ProfileController extends \BaseController {
 			'fullname' => 'name'
 		));
 
+		$file = Input::file('pic_link');
+		if ( count( $file ) > 0 )
+		{
+			$mime_type = $file->getMimeType();
+			// must be image
+			if ( $mime_type == "image/jpeg" || $mime_type == "image/png" || $mime_type == "image/gif" )
+			{
+				$destination_folder = "assets/uploads/tmp/";
+				$file->move($destination_folder, "tmp-image");
+
+				$extension = $file->getClientOriginalExtension();
+				$newfile_name = str_random(10) . '.' . $extension;
+
+				// Register AWS instance
+				//$s3 = new S3(awsAccessKey, awsSecretKey); 
+				//$s3 = AWS::get('s3');
+				$s3 = App::make('aws')->get('s3');
+				$result = $s3->putObject(array(
+					'Bucket' => 'providexpert',
+					'Key' => $newfile_name,
+					'SourceFile' => $destination_folder.'tmp-image',
+					'ACL'    => 'public-read',
+				));
+			 
+				// Delete local file
+				File::delete($destination_folder."tmp-image");
+			 
+				$newfile_name = "https://s3-us-west-2.amazonaws.com/providexpert/" . $newfile_name;
+			}
+			else
+			{
+				return Redirect::back()->withErrormsg("Uploaded file must be image");
+			}			
+		}		
+
 		if ($validator->fails()) {
 			return Redirect::back()
 				->withErrors($validator)
@@ -61,6 +95,8 @@ class ProfileController extends \BaseController {
 		} else {
 			$user = Auth::user();
 			$user->fill($input);
+			if ( count( $file ) > 0 )
+				$user->photo = $newfile_name;
 			$user->save();
 			return Redirect::route('profile.index')
 				->withMessage('Profile updated')
@@ -85,6 +121,41 @@ class ProfileController extends \BaseController {
 			'category_id' => 'category',
 		));
 
+		$file = Input::file('pic_link');
+		if ( count( $file ) > 0 )
+		{
+			$mime_type = $file->getMimeType();
+			// must be image
+			if ( $mime_type == "image/jpeg" || $mime_type == "image/png" || $mime_type == "image/gif" )
+			{
+				$destination_folder = "assets/uploads/tmp/";
+				$file->move($destination_folder, "tmp-image");
+
+				$extension = $file->getClientOriginalExtension();
+				$newfile_name = str_random(10) . '.' . $extension;
+
+				// Register AWS instance
+				//$s3 = new S3(awsAccessKey, awsSecretKey); 
+				//$s3 = AWS::get('s3');
+				$s3 = App::make('aws')->get('s3');
+				$result = $s3->putObject(array(
+					'Bucket' => 'providexpert',
+					'Key' => $newfile_name,
+					'SourceFile' => $destination_folder.'tmp-image',
+					'ACL'    => 'public-read',
+				));
+			 
+				// Delete local file
+				File::delete($destination_folder."tmp-image");
+			 
+				$newfile_name = "https://s3-us-west-2.amazonaws.com/providexpert/" . $newfile_name;
+			}
+			else
+			{
+				return Redirect::back()->withErrormsg("Uploaded file must be image");
+			}			
+		}	
+
 		if ($validator->fails()) {
 			return Redirect::back()
 				->withErrors($validator)
@@ -97,6 +168,8 @@ class ProfileController extends \BaseController {
 				'address' => $input['address'],
 				'phone' => $input['phone'],
 			));
+			if ( count( $file ) > 0 )
+				$user->photo = $newfile_name;
 
 			$user->expert->fill(array(
 				'expert_name' => $input['expert_name'],

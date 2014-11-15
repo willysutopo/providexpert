@@ -22,7 +22,16 @@
 				<!-- BEGIN USER LOGIN DROPDOWN -->
 				<li class="dropdown dropdown-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle hide1" src="{{ asset('assets/admin/layout/img/avatar3_small.jpg') }}"/>
+					<?php
+					if ( $currentPhoto == "" )
+					{
+						echo '<img alt="" class="img-circle hide1" src="assets/admin/layout/img/avatar3_small.jpg"/>';
+					}
+					else
+					{
+						echo '<img alt="" class="img-circle hide1" src="'.$currentPhoto.'" />';
+					}
+					?>					
 					<span class="username username-hide-on-mobile">
 					<!-- gonna change here --> {{ $currentUserName }} </span>
 					<i class="fa fa-angle-down"></i>

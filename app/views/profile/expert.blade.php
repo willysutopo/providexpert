@@ -104,6 +104,12 @@
 			</div>
 			<!-- END PAGE HEADER-->
 
+			@if (Session::has('errormsg'))
+				<div class="bg-danger success_padder success_margin pt20 pb20 pl20 pr20 mb20">
+					{{{ Session::get('errormsg') }}}
+				</div>
+			@endif
+
 			@if (Session::has('message'))
 				<div class="bg-success success_padder success_margin pt20 pb20 pl20 pr20 mb20">
 					{{{ Session::get('message') }}}
@@ -116,6 +122,7 @@
 					'role' => 'form',
 					'class' => 'form-horizontal',
 					'method' => 'PUT',
+					'files'	=> true
 				)) }}
 
 				<div class="col-sm-6">
@@ -171,7 +178,14 @@
 							{{ Form::input('tel', 'phone', Input::old('phone', $user->phone), array('class' => 'form-control')) }}
 							{{ $errors->first('phone', '<p class="help-block text-danger" style="color:#ff0000">:message</p>') }}
 						</div>
-					</div>					
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="photo">Photo</label>
+						<div class="col-sm-8">
+							{{ Form::file('pic_link', array('class' => 'form-control')) }}
+						</div>
+					</div>
 
 					<div class="row">
 						<div class="col-sm-offset-4 col-sm-8">
