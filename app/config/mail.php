@@ -57,7 +57,7 @@ return array(
 	*/
 
 	//'from' => array(''),
-	'from' => array('address' => 'willy.sutopo@msea.vc', 'name' => 'Willy'),
+	'from' => array('address' => 'willy.sutopo@msea.vc', 'name' => 'Providexpert Team'),
 
 	/*
 	|--------------------------------------------------------------------------
