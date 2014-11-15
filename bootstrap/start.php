@@ -33,7 +33,7 @@ $env = $app->detectEnvironment(array(
 	'local' => getenv('HOSTNAME'),
 
 ));
-
+$env = "local";
 /*
 |--------------------------------------------------------------------------
 | Bind Paths
