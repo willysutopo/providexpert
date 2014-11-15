@@ -150,47 +150,35 @@
 
 								<div class="mt20">&nbsp;</div>
 
+								<?php $i = 1; ?>
 								<table class="table table-striped table-hover">
+								@foreach( $questions as $question )
 								<tr>
 								<td class="text-right">
-									1.
+									{{ $i }}.
 								</td>
 								<td>
-									Saya mengalami keluhan. Terkadang, di bagian bawah sebelah kiri dada terasa sakit. Serasa bagian dalam anggota tubuh sedang diremas. Saya memang sering makan enak tanpa memikirkan efek samping dari makan enak tersebut. Apakah ada hubungannya makan enak dengan sakit yang saya alami tersebut? Sebelumnya, terima kasih untuk menjawab pertanyaan saya ini.
+									{{ stripslashes($question->question) }}
 									<!-- information regarding this questions -->
 									<div class="mt10">
-										<span class="answered">answered by 3 experts</span>
-										| <a href="/answer/1">view answers</a>
-										<span class="info"> | last answered : 10 November 2014</span>
+										<?php
+										if ($question->answer_count == 0)
+										{
+											echo '<span class="unanswered">no answer yet</span>';
+										}
+										else
+										{
+											echo '
+											<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+											| <a href="/answer/'.$question->id.'">view answers</a>
+											<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+										}
+										?>
 									</div>
 								</td>
 								</tr>
-								<tr>
-								<td class="text-right">
-									2.
-								</td>
-								<td>
-									Anak saya terkadang tiba-tiba bisa mimisan. Padahal, saya sudah sering memberinya minum air putih sehingga tidak kering. Apakah mungkin disebabkan dia suka makan goreng-gorengan atau cemilan snack? Lalu saya dengar makan vitamin juga bisa berakibat panas. Apakah benar demikian? Mohon bantuannya. Terima kasih banyak.
-									<!-- information regarding this questions -->
-									<div class="mt10">
-										<span class="unanswered">no answer yet</span>
-									</div>
-								</td>
-								</tr>
-								<tr>
-								<td class="text-right">
-									3.
-								</td>
-								<td>
-									Saya akhir-akhir ini suka mengalami gangguan sakit kepala yang sangat hebat, terutama jika kondisi rumah tangga sedang kacau balau. Jika terjadi kericuhan, pasti kambuh. Apakah bagus untuk mengkonsumsi Panadol merah? Jika sakit sekali, saya langsung memakan 2 sekaligus. Suatu hari, saya nekad pernah memakan 3 sekaligus. Untungnya, tidak terjadi apa-apa. Apakah ada efek sampingnya? Lalu, solusi apakah yang bisa anda anjurkan untuk saya? Terima kasih.
-									<!-- information regarding this questions -->
-									<div class="mt10">
-										<span class="answered">answered by 1 expert</span>
-										| <a href="/answer/1">view answers</a>
-										<span class="info"> | last answered : 12 November 2014</span>
-									</div>
-								</td>
-								</tr>
+								<?php $i++; ?>													
+								@endforeach
 								</table>
 							</div>
 						</div>

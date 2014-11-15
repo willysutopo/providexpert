@@ -148,7 +148,24 @@ class AskController extends \BaseController {
 			return Redirect::to("/login");
 		}
 
-		return View::make('ask.list');
+		$questions = DB::table('questions')
+			->select(DB::raw('count(answers.id) as answer_count, questions.id, questions.question, questions.category_id, answers.updated_at as answer_updated_at'))
+			->leftJoin('answers', 'answers.question_id', '=', 'questions.id')
+			->where('questions.published', 1)
+			->where('questions.asker_id', Auth::user()->id)			
+			->orderBy('questions.updated_at', 'desc')
+			->groupBy('questions.id')
+			->groupBy('questions.question')
+			->groupBy('questions.category_id')
+			->groupBy('answers.updated_at')
+			->get();
+
+		/*
+		print_r( $questions );
+		exit;
+		*/
+
+		return View::make('ask.list')->withQuestions($questions);
 	}
 
 	// function to show answer of a question ( in the form of ID )
