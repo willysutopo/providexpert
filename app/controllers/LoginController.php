@@ -21,7 +21,11 @@ class LoginController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::to('dashboard');
+			if (Entrust::hasRole('Expert')) {
+				return Redirect::route('expert.dashboard');
+			} else {
+				return Redirect::route('dashboard');
+			}
 		}		
 	}
 
@@ -48,7 +52,11 @@ class LoginController extends \BaseController {
 		// Checking the hashed password, if matched proceed to dashboard, else redirect to login		
 		if (Auth::attempt( array('email' => $email, 'password' => $password)) )
 		{
-			return Redirect::to('dashboard');
+			if (Entrust::hasRole('Expert')) {
+				return Redirect::route('expert.dashboard');
+			} else {
+				return Redirect::route('dashboard');
+			}
 		}
 		else
 		{			

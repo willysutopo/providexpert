@@ -88,3 +88,19 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('roleUser', function() {
+	if (Entrust::hasRole('User') == false) {
+		$url = route('login');
+		return Redirect::guest($url); // User is not logged in, redirect him to login page
+	}
+
+});
+
+Route::filter('roleExpert', function() {
+	if (Entrust::hasRole('Expert') == false) {
+		$url = route('login');
+		return Redirect::guest($url); // User is not logged in, redirect him to login page
+	}
+});
