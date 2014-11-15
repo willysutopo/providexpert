@@ -172,7 +172,61 @@
 						</div>
 					</div>
 					<div class="tab-pane fade" id="property_tab_content">
-						
+
+						<!-- inside property tab -->
+						<div class="row">
+							<div class="col-md-9 col-xs-12">
+
+								<!-- search part -->
+								<div class="col-md-6"></div>
+								<div class="text-right col-md-6 pr0">
+									<div class="form-group">
+										<label class="col-md-3 control-label mt5 pr0">Filter</label>
+										<div class="col-md-9 pr0">
+											<select class="form-control">
+												<option value="all">All Status</option>
+												<option value="0">Unanswered</option>
+												<option value="1">Answered</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="mt20">&nbsp;</div>
+
+								<?php $i = 1; ?>
+								<table class="table table-striped table-hover">
+								@foreach( $questions as $question )
+								<tr>
+								<td class="text-right">
+									{{ $i }}.
+								</td>
+								<td>
+									{{ stripslashes($question->question) }}
+									<!-- information regarding this questions -->
+									<div class="mt10">
+										<?php
+										if ($question->answer_count == 0)
+										{
+											echo '<span class="unanswered">no answer yet</span>';
+										}
+										else
+										{
+											echo '
+											<span class="answered">answered by '.( $question->answer_count ).' experts</span>
+											| <a href="/answer/'.$question->id.'">view answers</a>
+											<span class="info"> | last answered : '.( date("n F Y", strtotime( $question->answer_updated_at)) ).'</span>';
+										}
+										?>
+									</div>
+								</td>
+								</tr>
+								<?php $i++; ?>													
+								@endforeach
+								</table>
+							</div>
+						</div>
+
 					</div>
 					<div class="tab-pane fade" id="food_tab_content">
 						
