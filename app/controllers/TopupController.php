@@ -14,8 +14,10 @@ class TopupController extends \BaseController {
 		{
 			return Redirect::to("/login");
 		}
+
+		$user = User::where('users.id', Auth::user()->id)->select('credits')->first();
 		
-		return View::make('topup.index');
+		return View::make('topup.index')->withUser( $user );
 	}
 
 

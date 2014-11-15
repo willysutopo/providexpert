@@ -103,42 +103,37 @@
 				</ul>				
 			</div>
 			<!-- END PAGE HEADER-->
-			<div class="row">
-				<div class="col-md-4 col-xs-4 text-center">
-					<a href="ask/health">
-					<img src="/img/categories/health.jpg" border="0" alt="Health" title="Health" />
-					<div class="mt10"></div>
-					HEALTH</a>
-				</div>
-				<div class="col-md-4 col-xs-4 text-center">
-					<a href="ask/property">
-					<img src="/img/categories/property.jpg" border="0" alt="Property" title="Property" />
-					<div class="mt10"></div>
-					PROPERTY</a>
-				</div>
-				<div class="col-md-4 col-xs-4 text-center">
-					<a href="ask/food">
-					<img src="/img/categories/food.jpg" border="0" alt="Food" title="Food" />
-					<div class="mt10"></div>
-					FOOD</a>
-				</div>
-			</div>			
-			<div class="row">		
-				<div class="mt20">&nbsp;</div>
-				<div class="col-md-4 col-xs-4 text-center">
-					<a href="ask/love">
-					<img src="/img/categories/love.jpg" border="0" alt="Love" title="Love" />
-					<div class="mt10"></div>
-					LOVE</a>
-				</div>
-				<div class="col-md-4 col-xs-4 text-center">
-					<a href="ask/education">
-					<img src="/img/categories/education.jpg" border="0" alt="Education" title="Education" />
-					<div class="mt10"></div>
-					EDUCATION</a>
-				</div>
-				
+			<?php $i = 0; ?>
+			@foreach( $categories as $category )
+			<?php
+			if ( $i == 0 )
+			{
+				echo '<div class="row">';
+			}
+			else
+			if ( ( $i % 3 ) == 0 )
+			{
+				echo '</div>';
+				echo '<div class="row">';
+				echo '<div class="mt20">&nbsp;</div>';
+			}			
+			?>
+			
+			<div class="col-md-4 col-xs-4 text-center">
+				<a href="ask/{{ $category->category_alias }}">
+				<img src="/img/categories/{{ $category->pic_link }}" border="0" alt="{{ $category->category_name }}" title="{{ $category->category_name }}" />
+				<div class="mt10"></div>
+				{{ strtoupper($category->category_name) }}</a>
 			</div>
+
+			<?php $i++; ?>
+
+			<?php
+			if ( $i == count( $categories ) )
+				echo '</div>';
+			?>
+
+			@endforeach
 			
 			<!-- END PAGE CONTENT-->
 		</div>
