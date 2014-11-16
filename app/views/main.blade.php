@@ -202,78 +202,72 @@
       <div class="panel panel-default">
             <div class="panel-heading">
               <h5 class="panel-title">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">Lorem ipsum dolor sit amet</a>
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">Professional Experts</a>
               </h5>
             </div>
             <div id="accordion1_1" class="panel-collapse collapse in">
               <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam quis nostrud exercitation dolore magna ullamco.</p>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco sed eiusmod tempor ut labore et dolore.</p>
+                <p>We carefully choose experts who are willing to give any professional answers to make sure our users are satisfied.</p>          
               </div>
             </div>
           </div>
       <div class="panel panel-default">
             <div class="panel-heading">
               <h5 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">Consectetur adipisicing elit</a>
+                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">Common Categories</a>
               </h5>
             </div>
             <div id="accordion1_2" class="panel-collapse collapse">
               <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam quis nostrud exercitation dolore magna ullamco.</p>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco sed eiusmod tempor ut labore et dolore.</p>
+                <p>We choose categories which people often ask about.</p>
               </div>
             </div>
           </div>
       <div class="panel panel-default">
             <div class="panel-heading">
               <h5 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">Augue assum anteposuerit dolore</a>
+                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">Free Initial Credits</a>
               </h5>
             </div>
             <div id="accordion1_3" class="panel-collapse collapse">
               <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam quis nostrud exercitation dolore magna ullamco.</p>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco sed eiusmod tempor ut labore et dolore.</p>
+                <p>We give 50 free initial credits. Yes, each question worths 2 credits. Why do we charge? Because we guarantee that you give satisfying answers from experts. You can try to ask with your given free credits. If you do not like what we offer, you may no longer use our service.</p>
               </div>
             </div>
           </div>
       <div class="panel panel-default">
             <div class="panel-heading">
               <h5 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_4">Sollemnes in futurum</a>
+                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_4">Secure Payment</a>
               </h5>
             </div>
             <div id="accordion1_4" class="panel-collapse collapse">
               <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam quis nostrud exercitation dolore magna ullamco.</p>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco sed eiusmod tempor ut labore et dolore.</p>
+                <p>To get additional credits, you have to topup. It is so cheap and affordable. We cooperate with Paypal's Braintree for payment transaction and all transactions use credit card. All information about your credit card is confidential.</p>
               </div>
             </div>
           </div>
       <div class="panel panel-default">
             <div class="panel-heading">
               <h5 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">Nostrud Tempor veniam</a>
+                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">Notification</a>
               </h5>
             </div>
             <div id="accordion1_5" class="panel-collapse collapse">
               <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam quis nostrud exercitation dolore magna ullamco.</p>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco sed eiusmod tempor ut labore et dolore.</p>
+                <p>Whenever an expert has answered to your queries, you will get notification via email.</p>
               </div>
             </div>
           </div>
       <div class="panel panel-default">
             <div class="panel-heading">
               <h5 class="panel-title">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">Ut enem magana sed dolore</a>
+                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">Simple User Interface</a>
               </h5>
             </div>
             <div id="accordion1_6" class="panel-collapse collapse">
               <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam quis nostrud exercitation dolore magna ullamco.</p>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco sed eiusmod tempor ut labore et dolore.</p>
+                <p>We make sure that users will easily navigate within our website. The layout is so simple that even beginners will quickly familiarize themselves with it.</p>
               </div>
             </div>
           </div>
@@ -289,49 +283,15 @@
   <div class="container">
     <div class="row">
     <div class="col-md-10">
-      <h2>CHECK OUT ADMIN THEME! <em>Most Full Featured &amp; Powerfull Admin Theme</em></h2>
+      <h2>GET STARTED QUICKLY!</h2>
     </div>
     <div class="col-md-2 text-right">
-      <a href="http://www.keenthemes.com/preview/index.php?theme=metronic_admin&amp;page=index.html" target="_blank" class="btn btn-primary">Live preview</a>
+      <a href="/login" class="btn btn-primary">Begin</a>
     </div>
     </div>
   </div>
 </div>
 <!-- Checkout block END -->
-
-<!-- Facts block BEGIN -->
-<div class="facts-block content content-center" id="facts-block">
-  <h2>Some facts about us</h2>
-  <div class="container">
-    <div class="row">
-    <div class="col-md-3 col-sm-3 col-xs-6">
-      <div class="item">
-        <strong>39</strong>
-        Projects Completed
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-3 col-xs-6">
-      <div class="item">
-        <strong>14</strong>
-        Team Members
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-3 col-xs-6">
-      <div class="item">
-        <strong>29k+</strong>
-        Products Sold
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-3 col-xs-6">
-      <div class="item">
-        <strong>500</strong>
-        Weekly Sales
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-<!-- Facts block END -->
 
 <!-- Prices block BEGIN -->
 <div class="prices-block content content-center" id="prices">
@@ -339,201 +299,88 @@
     <h2 class="margin-bottom-50"><strong>Pricing</strong> Tables</h2>
   <div class="row">
       <!-- Pricing item BEGIN -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="pricing-item">
           <div class="pricing-head">
             <h3>Beginner</h3>
-            <p>Lorem ipsum dolor</p>
           </div>
           <div class="pricing-content">
             <div class="pi-price">
-              <strong>$<em>19</em></strong>
-              <p>Per Month</p>
+              <strong>$<em>1</em></strong>
+              <p>100 Credits</p>
             </div>
-          <ul class="list-unstyled">
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-          </ul>
           </div>
           <div class="pricing-footer">
-            <a class="btn btn-default" href="javascript:void(0);">Sign Up</a>
+            <a class="btn btn-default" href="/login">Sign Up</a>
           </div>
         </div>
       </div>
       <!-- Pricing item END -->
       <!-- Pricing item BEGIN -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="pricing-item">
           <div class="pricing-head">
             <h3>Pro</h3>
-            <p>Lorem ipsum dolor</p>
           </div>
           <div class="pricing-content">
             <div class="pi-price">
-              <strong>$<em>25</em></strong>
-              <p>Per Month</p>
-            </div>
-          <ul class="list-unstyled">
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-          </ul>
+              <strong>$<em>2</em></strong>
+              <p>250 Credits</p>
+            </div>          
           </div>
           <div class="pricing-footer">
-            <a class="btn btn-default" href="javascript:void(0);">Sign Up</a>
+            <a class="btn btn-default" href="/login">Sign Up</a>
           </div>
         </div>
       </div>
       <!-- Pricing item END -->
       <!-- Pricing item BEGIN -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="pricing-item">
           <div class="pricing-head">
-            <h3>Expert</h3>
-            <p>Lorem ipsum dolor</p>
+            <h3>Expert</h3>            
           </div>
           <div class="pricing-content">
             <div class="pi-price">
-              <strong>$<em>59</em></strong>
-              <p>Per Month</p>
-            </div>
-          <ul class="list-unstyled">
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-          </ul>
+              <strong>$<em>5</em></strong>
+              <p>700 Credits</p>
+            </div>          
           </div>
           <div class="pricing-footer">
-            <a class="btn btn-default" href="javascript:void(0);">Sign Up</a>
+            <a class="btn btn-default" href="/login">Sign Up</a>
           </div>
         </div>
       </div>
-      <!-- Pricing item END -->
-      <!-- Pricing item BEGIN -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="pricing-item">
-          <div class="pricing-head">
-            <h3>Hi-Tech</h3>
-            <p>Lorem ipsum dolor</p>
-          </div>
-          <div class="pricing-content">
-            <div class="pi-price">
-              <strong>$<em>98</em></strong>
-              <p>Per Month</p>
-            </div>
-          <ul class="list-unstyled">
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-            <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
-          </ul>
-          </div>
-          <div class="pricing-footer">
-            <a class="btn btn-default" href="javascript:void(0);">Sign Up</a>
-          </div>
-        </div>
-      </div>
-      <!-- Pricing item END -->
+      <!-- Pricing item END -->      
     </div>
   </div>
 </div>
 <!-- Prices block END -->
-
-<!-- Testimonials block BEGIN -->
-<div class="testimonials-block content content-center margin-bottom-65">
-  <div class="container">
-    <h2>Customer <strong>testimonials</strong></h2>
-    <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h4>
-
-    <div class="carousel slide" data-ride="carousel" id="testimonials-block">
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-        <!-- Carousel items -->
-        <div class="active item">
-          <blockquote><p>This is the most awesome, full featured, easy, costomizeble theme. It’s extremely responsive and very helpful to all suggestions.</p></blockquote>
-          <span class="testimonials-name">Mark Doe</span>
-        </div>
-        <!-- Carousel items -->
-        <div class="item">
-          <blockquote><p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.</p></blockquote>
-          <span class="testimonials-name">Joe Smith</span>
-        </div>
-        <!-- Carousel items -->
-        <div class="item">
-          <blockquote><p>Williamsburg carles vegan helvetica. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p></blockquote>
-          <span class="testimonials-name">Linda Adams</span>
-        </div>
-      </div>
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#testimonials-block" data-slide-to="0" class="active"></li>
-        <li data-target="#testimonials-block" data-slide-to="1"></li>
-        <li data-target="#testimonials-block" data-slide-to="2"></li>
-      </ol>
-    </div>
-  </div>
-</div>
-<!-- Testimonials block END -->
-
-<!-- Partners block BEGIN -->
-<div class="partners-block">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-2 col-sm-3 col-xs-6">
-        <img src="{{ asset('assets/frontend/onepage/img/partners/cisco.png') }}" alt="cisco">
-      </div>
-      <div class="col-md-2 col-sm-3 col-xs-6">
-        <img src="{{ asset('assets/frontend/onepage/img/partners/walmart.png') }}" alt="walmart">
-      </div>
-      <div class="col-md-2 col-sm-3 col-xs-6">
-        <img src="{{ asset('assets/frontend/onepage/img/partners/gamescast.png') }}" alt="gamescast">
-      </div>
-      <div class="col-md-2 col-sm-3 col-xs-6">
-        <img src="{{ asset('assets/frontend/onepage/img/partners/spinwokrx.png') }}" alt="spinwokrx">
-      </div>
-      <div class="col-md-2 col-sm-3 col-xs-6">
-        <img src="{{ asset('assets/frontend/onepage/img/partners/ngreen.png') }}" alt="ngreen">
-      </div>
-      <div class="col-md-2 col-sm-3 col-xs-6">
-        <img src="{{ asset('assets/frontend/onepage/img/partners/vimeo.png') }}" alt="vimeo">
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Partners block END -->
 
 <!-- BEGIN PRE-FOOTER -->
 <div class="pre-footer" id="contact">
   <div class="container">
     <div class="row">
       <!-- BEGIN BOTTOM ABOUT BLOCK -->
-      <div class="col-md-4 col-sm-6 pre-footer-col">
+      <div class="col-md-6 col-sm-6 pre-footer-col">
         <h2>About us</h2>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
-        <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
+        <p>Most of the time, people are not satisfied with the answers that they get. Here, our experts from different fields are registered here to give answers that people NEED. People will no longer get misleading information as every single answer is CRITICAL.</p>
       </div>
-      <!-- END BOTTOM ABOUT BLOCK -->
-
-      <!-- BEGIN TWITTER BLOCK --> 
-      <div class="col-md-4 col-sm-6 pre-footer-col">
-        <h2 class="margin-bottom-0">Latest Tweets</h2>
-        <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>      
-      </div>
-      <!-- END TWITTER BLOCK -->
+      <!-- END BOTTOM ABOUT BLOCK -->    
       
-      <div class="col-md-4 col-sm-6 pre-footer-col">
+      <div class="col-md-6 col-sm-6 pre-footer-col">
         <!-- BEGIN BOTTOM CONTACTS -->
         <h2>Our Contacts</h2>
         <address class="margin-bottom-20">
-          35, Lorem Lis Street, Park Ave<br>
-          California, US<br>
-          Phone: 300 323 3456<br>
-          Fax: 300 323 1456<br>
-          Email: <a href="mailto:info@metronic.com">info@metronic.com</a><br>
-          Skype: <a href="skype:metronic">metronic</a>
+          Jl. Jend. Sudirman Kav 1 - Jakarta Pusat - Indonesia<br>
+          Phone: +6221-6555555<br>
+          Fax: +6221-6555556<br>
+          Email: <a href="mailto:willy.sutopo@msea.vc">willy.sutopo@msea.vc</a><br>
+          Skype: <a href="skype:willternative">willternative</a>
         </address>
         <!-- END BOTTOM CONTACTS -->
 
+        <!--
         <div class="pre-footer-subscribe-box">
           <h2>Newsletter</h2>
           <form action="javascript:void(0);">
@@ -545,6 +392,7 @@
             </div>
           </form>
         </div>
+        -->
       </div>
     </div>
   </div>
@@ -557,23 +405,9 @@
     <div class="row">
       <!-- BEGIN COPYRIGHT -->
       <div class="col-md-6 col-sm-6">
-        <div class="copyright">2014 © Metronic One Page. ALL Rights Reserved.</div>
+        <div class="copyright">2014 © Newsexpert. ALL Rights Reserved.</div>
       </div>
-      <!-- END COPYRIGHT -->
-      <!-- BEGIN SOCIAL ICONS -->
-      <div class="col-md-6 col-sm-6 pull-right">
-        <ul class="social-icons">
-          <li><a class="rss" data-original-title="rss" href="javascript:void(0);"></a></li>
-          <li><a class="facebook" data-original-title="facebook" href="javascript:void(0);"></a></li>
-          <li><a class="twitter" data-original-title="twitter" href="javascript:void(0);"></a></li>
-          <li><a class="googleplus" data-original-title="googleplus" href="javascript:void(0);"></a></li>
-          <li><a class="linkedin" data-original-title="linkedin" href="javascript:void(0);"></a></li>
-          <li><a class="youtube" data-original-title="youtube" href="javascript:void(0);"></a></li>
-          <li><a class="vimeo" data-original-title="vimeo" href="javascript:void(0);"></a></li>
-          <li><a class="skype" data-original-title="skype" href="javascript:void(0);"></a></li>
-        </ul>
-      </div>
-      <!-- END SOCIAL ICONS -->
+      <!-- END COPYRIGHT -->    
     </div>
   </div>
 </div>
