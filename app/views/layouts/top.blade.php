@@ -25,7 +25,7 @@
 					<?php
 					if ( $currentPhoto == "" )
 					{
-						echo '<img alt="" class="img-circle hide1" src="assets/admin/layout/img/avatar3_small.jpg"/>';
+						echo '<img alt="" class="img-circle hide1" src="/assets/admin/layout/img/avatar3_small.jpg"/>';
 					}
 					else
 					{

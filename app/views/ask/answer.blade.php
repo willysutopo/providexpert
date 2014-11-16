@@ -119,7 +119,7 @@
 						<div class="question">
 							<b>Question :</b>
 							<div class="mt5">
-								{{ stripslashes( $question->question ) }}				
+								{{ nl2br( stripslashes( $question->question ) ) }}
 							</div>
 						</div>
 					</div>					
@@ -141,7 +141,7 @@
 							{{ $i }}.
 						</td>
 						<td>
-							{{ stripslashes( $answer->answer ) }}
+							{{ nl2br( stripslashes( $answer->answer ) ) }}
 							<!-- information regarding this answer -->
 							<div class="mt10">
 								<span class="answered">answered by {{ $answer->expert_name }}</span>
