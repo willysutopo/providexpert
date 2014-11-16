@@ -74,6 +74,19 @@ class BraintreeManager{
 
 	public function updateCC($user_id, $cc_num, $cvv_num, $exp)
 	{
+		$result = Braintree_CreditCard::create(array(
+		    'customerId' => $user_id,
+		    'number' => $cc_num,
+		    'cvv' => $cvv_num,
+		    'expirationDate' => $exp,
+		    'options' => array(
+	            'verifyCard' => true
+	        )
+		));
+
+		return $result;
+
+		/*
 		$result = Braintree_Customer::update($user_id, array(
 		    'creditCard' => array(
 		        'number' => $cc_num,
@@ -86,6 +99,7 @@ class BraintreeManager{
 		));	
 
 		return $result;
+		*/
 	}
 
 	public function sale($user_id, $amount)
