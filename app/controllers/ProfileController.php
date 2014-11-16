@@ -322,21 +322,42 @@ class ProfileController extends \BaseController {
 				//
 				// save to paypal info
 				//
-				
-				$credit = $result->creditCard;
-				$paypal = new Paypal;
-				$data = array(
-					'user_id' => $user->id,
-					'token' => $credit->token,
-					'expired' => $credit->expirationDate,
-					'type' => $credit->cardType,
-					'masked' => $credit->maskedNumber,
-				);
-				//
-				// skip validation
-				//
-				$paypal->fill($data);
-				$paypal->save($data);
+				if($user_paypal)
+				{
+					$credit = $result->creditCard;
+					$paypal = Paypal::where("user_id", "=", $user->id)->first();
+					$paypal = Paypal::find($paypal->id);
+					$data = array(
+						'token' => $credit->token,
+						'expired' => $credit->expirationDate,
+						'type' => $credit->cardType,
+						'masked' => $credit->maskedNumber,
+					);
+
+					//
+					// skip validation
+					//
+					$paypal->fill($data);
+					$paypal->save($data);
+				}
+				else
+				{
+					$credit = $result->creditCard;
+					$paypal = new Paypal;
+					$data = array(
+						'user_id' => $user->id,
+						'token' => $credit->token,
+						'expired' => $credit->expirationDate,
+						'type' => $credit->cardType,
+						'masked' => $credit->maskedNumber,
+					);
+
+					//
+					// skip validation
+					//
+					$paypal->fill($data);
+					$paypal->save($data);
+				}
 
 				return Redirect::route('profile.paypal')->with('done', '<strong>Success</strong>: Your Credit Card Information Sync with Paypal');
 			}
