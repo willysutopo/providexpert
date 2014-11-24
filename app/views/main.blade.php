@@ -231,7 +231,7 @@
             </div>
             <div id="accordion1_3" class="panel-collapse collapse">
               <div class="panel-body">
-                <p>We give 50 free initial credits. Yes, each question worths 2 credits. Why do we charge? Because we guarantee that you give satisfying answers from experts. You can try to ask with your given free credits. If you do not like what we offer, you may no longer use our service.</p>
+                <p>We give 3 free initial credits. It's simple. Each question worths 1 credit. Why do we charge? Because we guarantee that you give satisfying answers from experts. You can try to ask with your given free credits. If you do not like what we offer, you may no longer use our service.</p>
               </div>
             </div>
           </div>
@@ -307,7 +307,7 @@
           <div class="pricing-content">
             <div class="pi-price">
               <strong>$<em>1</em></strong>
-              <p>100 Credits</p>
+              <p>3 Credits</p>
             </div>
           </div>
           <div class="pricing-footer">
@@ -325,7 +325,7 @@
           <div class="pricing-content">
             <div class="pi-price">
               <strong>$<em>2</em></strong>
-              <p>250 Credits</p>
+              <p>7 Credits</p>
             </div>          
           </div>
           <div class="pricing-footer">
@@ -343,7 +343,7 @@
           <div class="pricing-content">
             <div class="pi-price">
               <strong>$<em>5</em></strong>
-              <p>700 Credits</p>
+              <p>18 Credits</p>
             </div>          
           </div>
           <div class="pricing-footer">

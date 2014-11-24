@@ -58,9 +58,9 @@ class TopupController extends \BaseController {
 				// second, update credit
 				//
 				$point = array(
-					1 => 100,
-					2 => 250,
-					5 => 700,
+					1 => 3,
+					2 => 7,
+					5 => 18,
 				);
 
 				$user->credits += $point[$input['price']];

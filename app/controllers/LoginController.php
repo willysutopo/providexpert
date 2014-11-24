@@ -259,7 +259,7 @@ class LoginController extends \BaseController {
 		$user->status = 'A';		
 		$user->photo = '';
 		$user->timezone = '';
-		$user->credits = 50; // 50 free initial credits
+		$user->credits = 3; // 3 free initial credits
 		$user->last_login = date("Y-m-d H:i:s");		
 		$user->save();
 

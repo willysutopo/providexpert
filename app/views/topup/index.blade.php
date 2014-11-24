@@ -122,11 +122,11 @@
 						<div class="pl20">
 							<div class="radio-list price_option">
 								<label>
-								<input type="radio" name="price" value="1" checked="" /> <span>$1 For 100 Credits</span></label>
+								<input type="radio" name="price" value="1" checked="" /> <span>$1 For 3 Credits</span></label>
 								<label>
-								<input type="radio" name="price" value="2" /> <span>$2 For 250 Credits</span></label>
+								<input type="radio" name="price" value="2" /> <span>$2 For 7 Credits</span></label>
 								<label>
-								<input type="radio" name="price" value="5" /> <span>$5 For 700 Credits</span></label>	
+								<input type="radio" name="price" value="5" /> <span>$5 For 18 Credits</span></label>	
 							</div>
 						</div>
 					</div>
