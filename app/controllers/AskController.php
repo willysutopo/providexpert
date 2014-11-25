@@ -152,8 +152,8 @@ class AskController extends \BaseController {
 		'.nl2br($user_question).'
 		<br /><br />
 		Please open this link to view the answer :
-		<a href="http://providexpert/answer/'.$question_id.'" target="_blank">
-		http://providexpert/answer/'.$question_id.'</a>
+		<a href="http://providexpert.rehack.co/answer/'.$question_id.'" target="_blank">
+		http://providexpert.rehack.co/answer/'.$question_id.'</a>
 		<br /><br />
 		Best Regards,
 		<br />
