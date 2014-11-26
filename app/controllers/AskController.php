@@ -37,13 +37,13 @@ class AskController extends \BaseController {
 		$user = User::where('id', Auth::user()->id)->first();
 		$credits = $user->credits;
 
-		if ( $credits < 2 )
+		if ( $credits < 1 )
 		{
 			return Redirect::route('ask.question',[$category])->withErrormsg('You do not have sufficient credits. Please top up first before you can post any question.');
 		}
 
 		// deduct credits
-		$user->credits = $credits - 2;
+		$user->credits = $credits - 1;
 		$user->update();
 
 		$question = addslashes(Input::get('question'));
